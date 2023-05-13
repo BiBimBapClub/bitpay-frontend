@@ -15,7 +15,7 @@ export default function Sheet({ onClickBtn }) {
         </div>
         <div className="text-white px-4 py-2">0원</div>
       </div>
-      <ul className="w-full">
+      <ul className="w-full pb-24">
         <li>
           <SheetItem></SheetItem>
         </li>
@@ -44,6 +44,11 @@ export default function Sheet({ onClickBtn }) {
           <SheetItem></SheetItem>
         </li>
       </ul>
+      <div className="absolute bottom-0 bg-white w-full h-fit flex justify-center items-center">
+        <button className="bg-mainOrange text-white text-lg w-11/12 h-14 rounded-xl m-6">
+          주문하기
+        </button>
+      </div>
     </div>
   );
 }
