@@ -8,9 +8,9 @@ export default function SheetItem() {
     <div className="flex justify-around items-center my-3">
       <div className="flex justify-center items-center w-fit">
         <img src={img1} alt="menu1" className="h-20 w-20" />
-        <div className="ml-1">
+        <div className="ml-3">
           <div className="text-base">닭강정</div>
-          <div className="text-sm">10000원</div>
+          <div className="text-sm">10,000원</div>
         </div>
       </div>
 
