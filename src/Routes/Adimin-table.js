@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Components/admin/Header";
 import Tables from "../Components/admin/Tables";
 
-export default function Home() {
+export default function AdminTable() {
   return (
     <div>
       <Header></Header>
