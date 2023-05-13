@@ -1,0 +1,62 @@
+[
+  {
+    "name": "인싸세트",
+    "price": 48000,
+    "type": "set",
+    "imgae": "/"
+  },
+  {
+    "name": "너드세트1",
+    "price": 15000,
+    "type": "set",
+    "imgae": "/"
+  },
+  {
+    "name": "너드세트2",
+    "price": 13000,
+    "type": "set",
+    "imgae": "/"
+  },
+  {
+    "name": "갱세트1",
+    "price": 25000,
+    "type": "set",
+    "imgae": "/"
+  },
+  {
+    "name": "갱세트1",
+    "price": 22000,
+    "type": "set",
+    "imgae": "/"
+  },
+  {
+    "name": "닭강정",
+    "price": 5000,
+    "type": "single",
+    "imgae": "/"
+  },
+  {
+    "name": "어묵탕",
+    "price": 9000,
+    "type": "single",
+    "imgae": "/"
+  },
+  {
+    "name": "오돌뼈",
+    "price": 10000,
+    "type": "single",
+    "imgae": "/"
+  },
+  {
+    "name": "닭발",
+    "price": 12000,
+    "type": "single",
+    "imgae": "/"
+  },
+  {
+    "name": "주먹밥",
+    "price": 4000,
+    "type": "single",
+    "imgae": "/"
+  }
+]
