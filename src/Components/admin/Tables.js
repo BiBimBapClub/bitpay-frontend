@@ -11,7 +11,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">2</td>
             <td className="w-6/12">1시간 45분</td>
@@ -25,7 +25,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">완료</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">4</td>
             <td className="w-6/12 bg-green">입장</td>
@@ -39,7 +39,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">6</td>
             <td className="w-6/12">1시간 45분</td>
@@ -53,7 +53,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">8</td>
             <td className="w-6/12">1시간 45분</td>
@@ -67,7 +67,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">10</td>
             <td className="w-6/12">1시간 45분</td>
@@ -81,7 +81,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">12</td>
             <td className="w-6/12">1시간 45분</td>
@@ -95,7 +95,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">14</td>
             <td className="w-6/12">1시간 45분</td>
@@ -109,7 +109,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">16</td>
             <td className="w-6/12">1시간 45분</td>
@@ -123,7 +123,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">18</td>
             <td className="w-6/12">1시간 45분</td>
@@ -137,7 +137,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">20</td>
             <td className="w-6/12">1시간 45분</td>
@@ -151,7 +151,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">22</td>
             <td className="w-6/12">1시간 45분</td>
@@ -165,7 +165,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">24</td>
             <td className="w-6/12">1시간 45분</td>
@@ -179,7 +179,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">26</td>
             <td className="w-6/12">1시간 45분</td>
@@ -193,7 +193,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">28</td>
             <td className="w-6/12">1시간 45분</td>
@@ -207,7 +207,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">30</td>
             <td className="w-6/12">1시간 45분</td>
@@ -221,7 +221,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">32</td>
             <td className="w-6/12">1시간 45분</td>
@@ -235,7 +235,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">34</td>
             <td className="w-6/12">1시간 45분</td>
@@ -249,7 +249,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">36</td>
             <td className="w-6/12">1시간 45분</td>
@@ -263,7 +263,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">38</td>
             <td className="w-6/12">1시간 45분</td>
@@ -277,7 +277,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">40</td>
             <td className="w-6/12">1시간 45분</td>
@@ -291,7 +291,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">42</td>
             <td className="w-6/12">1시간 45분</td>
@@ -305,7 +305,7 @@ export default function Tables() {
             <td className="w-4/12 bg-black text-white border-2 border-solid border-black">퇴장</td>
             </tr>
           </table>
-          <table id ="table-detail" className="h-10 mt-2 ml-2.5 border-2 border-solid border-black float-right text-center">
+          <table id ="table-detail" className="h-10 mt-2 ml-1 border-2 border-solid border-black float-right text-center">
             <tr>
             <td className="w-2/12 border-2 border-solid border-black">44</td>
             <td className="w-6/12">1시간 45분</td>
