@@ -24,6 +24,9 @@ export default function PaymentRequest() {
       setOrderItems(orderItems.filter((order) => order !== item));
       setServeItems([...serveItems, item]);
     };
+    const handleCancel = (item) => {
+      setOrderItems(orderItems.filter((order) => order !== item));
+    };
     const handleServeComplete = (item) => {
         setServeItems(serveItems.filter((serve) => serve !== item));
       };
@@ -46,6 +49,12 @@ export default function PaymentRequest() {
                       확인
                     </button>
                   )}
+                  <button
+                      className="bg-slate-200 w-2/3 border-2 border-solid border-black mt-1 text-red-600"
+                      onClick={() => handleCancel(item)}
+                    >
+                      거절
+                    </button>
                 </div>
               </div>
             ))}
