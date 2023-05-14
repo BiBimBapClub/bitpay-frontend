@@ -84,11 +84,16 @@ export default function Home() {
     });
 
     (async function init() {
-      const menusData = await getMenus();
-      console.log(menusData);
       const tableData = await getTable(queryData.tableId);
       setTable(tableData);
     })();
+
+    const refetchTable = setInterval(async () => {
+      const tableData = await getTable(queryData.tableId);
+      setTable(tableData);
+    }, 1000 * 60);
+
+    return () => clearInterval(refetchTable);
   }, []);
 
   useEffect(() => {

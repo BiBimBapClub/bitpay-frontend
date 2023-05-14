@@ -62,29 +62,28 @@ const Table = () => {
     console.log(tables)
   };
   useEffect(() => {
-  
+    fetchData()
     const interval = setInterval(fetchData, 5000);
-  
     return () => clearInterval(interval);
   }, []);
   
   const handleCleaned = (index) => {
     let num = index.split(":")[1]
     console.log(num)
-    fetchData()
    postCleanFinish(num)
+   fetchData()
   };
   const handleOut = (index) => {
     let num = index.split(":")[1]
     console.log(num)
-    fetchData()
     postOut(num)
+    fetchData()
    };
    const handleIn = (index) => {
     let num = index.split(":")[1]
     console.log(num)
-    fetchData()
     postIn(num)
+    fetchData()
    };
   const handleStatusChange = (index, newStatus) => {
     setTableData((prevData) => {
@@ -147,7 +146,7 @@ const Table = () => {
           {oddRows?.map((row, index) => (
             <tr key={index} className="bg-gray-100" >
               <td className="border px-4 py-2 cursor-pointer " onClick={() => navigateToDetail(row.number.split(":")[1])}>{row.number.split(":")[1]}</td>
-              {renderStatusRow(row.status, row.number, row.time)}
+              {renderStatusRow(row.status, row.number, row.updatedTime)}
             </tr>
           ))}
         </tbody>
@@ -157,7 +156,7 @@ const Table = () => {
           {evenRows?.map((row, index) => (
             <tr key={index} className="bg-gray-100"  >
               <td className="border px-4 py-2 cursor-pointer" onClick={() => navigateToDetail(row.number.split(":")[1])} >{row.number.split(":")[1]}</td>
-              {renderStatusRow(row.status, row.number, row.time)}
+              {renderStatusRow(row.status, row.number, row.updatedTime)}
             </tr>
           ))}
  </tbody>

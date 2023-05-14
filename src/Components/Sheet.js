@@ -55,6 +55,8 @@ export default function Sheet({
     );
 
     closeSheet();
+
+    setIsOpen(false);
   };
 
   const onClickToss = () => {
