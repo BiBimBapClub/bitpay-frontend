@@ -5,6 +5,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "./Modal";
+import postOrder from "../Shared/apis/postOrder";
 
 export default function Sheet({
   onClickBtn,
@@ -27,7 +28,11 @@ export default function Sheet({
     return (value * 524288).toString(16);
   };
 
-  const createOrder = () => {
+  const createOrder = async () => {
+    // send order to server
+    const res = await postOrder();
+    console.log(res);
+
     // reset orderList's count
     setOrderList((prev) =>
       prev.map((value) => {
@@ -37,6 +42,7 @@ export default function Sheet({
         };
       })
     );
+
     closeSheet();
   };
 
