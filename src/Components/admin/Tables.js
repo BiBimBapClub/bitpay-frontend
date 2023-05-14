@@ -12,7 +12,7 @@ const Table = () => {
     const fetchData = async () => {
       const tables = await getTables();
       setTableData(tables.data);
-
+      console.log(tables)
     };
   
     const interval = setInterval(fetchData, 5000);
@@ -20,7 +20,21 @@ const Table = () => {
     return () => clearInterval(interval);
   }, []);
   
-
+  const handleCleaned = (index) => {
+    let num = index.split(":")[1]
+    console.log(num)
+   postCleanFinish(num)
+  };
+  const handleOut = (index) => {
+    let num = index.split(":")[1]
+    console.log(num)
+    postOut(num)
+   };
+   const handleIn = (index) => {
+    let num = index.split(":")[1]
+    console.log(num)
+    postIn(num)
+   };
   const handleStatusChange = (index, newStatus) => {
     setTableData((prevData) => {
       const newData = [...prevData];
@@ -32,35 +46,36 @@ const Table = () => {
   
 
   const renderStatusRow = (status, index, time) => {
-    if (status === '퇴장') {
+    console.log(status)
+    if (status === '청소요청') {
       return (
         <>
           <td className="border pl-4 py-2 bg-red-500 text-white">치워주세요</td>
           <td className="border pl-4 py-2">
-            <button className="bg-slate-200 w-2/3 border-2 border-solid border-black" onClick={() => handleStatusChange(index, '입장')}>
+            <button className="bg-slate-200 w-2/3 border-2 border-solid border-black" onClick={() => handleCleaned(index)}>
               완료
             </button>
           </td>
         </>
       );
-    } else if (status === '완료') {
+    } else if (status === '사용중') {
      
       return (
         <>
           <td className="border pl-4 py-2">{time}</td>
           <td className="border pl-4 py-2">
-            <button className="bg-slate-200 w-2/3 border-2 border-solid border-black" onClick={() => handleStatusChange(index, '퇴장')}>
+            <button className="bg-slate-200 w-2/3 border-2 border-solid border-black" onClick={() => handleOut(index)}>
               퇴장
             </button>
           </td>
         </>
       );
-    } else if (status === '입장') {
+    } else if (status === '청소완료') {
       return (
         <>
           <td className="bg-blue-500 text-white border pl-4 py-2">클린</td>
           <td className="border pl-4 py-2">
-            <button className="bg-slate-200 w-2/3 border-2 border-solid border-black" onClick={() => handleStatusChange(index, '완료')}>
+            <button className="bg-slate-200 w-2/3 border-2 border-solid border-black" onClick={() => handleIn(index)}>
               입장
             </button>
           </td>
@@ -80,8 +95,8 @@ const Table = () => {
         <tbody>
           {oddRows?.map((row, index) => (
             <tr key={index} className="bg-gray-100" >
-              <td className="border px-4 py-2 cursor-pointer " onClick={() => navigateToDetail(row.number)}>{row.number}</td>
-              {renderStatusRow(row.status, index * 2, row.time)}
+              <td className="border px-4 py-2 cursor-pointer " onClick={() => navigateToDetail(row.number.split(":")[1])}>{row.number.split(":")[1]}</td>
+              {renderStatusRow(row.status, row.number, row.time)}
             </tr>
           ))}
         </tbody>
@@ -90,8 +105,8 @@ const Table = () => {
         <tbody>
           {evenRows?.map((row, index) => (
             <tr key={index} className="bg-gray-100"  >
-              <td className="border px-4 py-2 cursor-pointer" onClick={() => navigateToDetail(row.number)} >{row.number}</td>
-              {renderStatusRow(row.status, index * 2 + 1, row.time)}
+              <td className="border px-4 py-2 cursor-pointer" onClick={() => navigateToDetail(row.number.split(":")[1])} >{row.number.split(":")[1]}</td>
+              {renderStatusRow(row.status, row.number, row.time)}
             </tr>
           ))}
  </tbody>
