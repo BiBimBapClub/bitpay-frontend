@@ -9,8 +9,7 @@ import Menus from "../Menus.json";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "../Components/Modal";
-import getOrders from "../Shared/apis/getOrders";
-import { getTable } from "../Shared/apis/getTable";
+import { getTable } from "../Shared/apis/getTables";
 
 export default function Home() {
   const location = useLocation();
