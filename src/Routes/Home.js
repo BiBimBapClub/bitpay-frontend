@@ -24,6 +24,7 @@ export default function Home() {
           name: Menu.name,
           price: Menu.price,
           count: 0,
+          src:Menu.image
         },
       ]);
     });

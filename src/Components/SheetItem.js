@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import img1 from "../images/img1.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,6 +13,7 @@ export default function SheetItem({ menu, setSelectedMenu, setRemovedMenu }) {
         name: menus.name,
         price: menus.price,
         count: menus.count - 1,
+        src:menus.src
       });
     }
   }
@@ -24,13 +24,14 @@ export default function SheetItem({ menu, setSelectedMenu, setRemovedMenu }) {
       name: menus.name,
       price: menus.price,
       count: menus.count + 1,
+      src:menus.src
     });
   }
 
   return (
     <div className="flex justify-center items-center my-3 px-3">
       <div className="w-1/2 flex items-center">
-        <img src={img1} alt="menu1" className="h-20 w-20" />
+        <img src={`${process.env.PUBLIC_URL+menus.src}`} alt="menu1" className="h-20 w-20" />
         <div className="ml-3">
           <div className="text-base">{menus.name}</div>
           <div className="text-sm">{menus.price}원</div>

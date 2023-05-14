@@ -14,7 +14,7 @@ export default function Nav({ setSelectedMenu }) {
       content: [],
     },
     {
-      label: "배달대행",
+      label: "음료수",
       content: [],
     },
   ]);
@@ -36,6 +36,7 @@ export default function Nav({ setSelectedMenu }) {
             name={menu.name}
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
+            src={menu.image}
           ></Menu>
         );
       } else if (menu.type === "single") {
@@ -44,6 +45,7 @@ export default function Nav({ setSelectedMenu }) {
             name={menu.name}
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
+            src={menu.image}
           ></Menu>
         );
       } else if (menu.type === "service") {
@@ -52,6 +54,7 @@ export default function Nav({ setSelectedMenu }) {
             name={menu.name}
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
+            src={menu.image}
           ></Menu>
         );
       }
@@ -66,7 +69,7 @@ export default function Nav({ setSelectedMenu }) {
         content: singleMenu,
       },
       {
-        label: "배달대행",
+        label: "음료수",
         content: service,
       },
     ]);

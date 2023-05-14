@@ -1,62 +1,75 @@
 [
   {
-    "name": "인싸세트",
+    "name": "인싸세트(닭강정2 + 오뎅탕 + 오돌뼈 + 닭발 + 주먹밥2)",
     "price": 48000,
     "type": "set",
-    "imgae": "/"
+    "image": "/images/chicken.png"
   },
   {
-    "name": "너드세트1",
+    "name": "너드세트1 (닭발 + 주먹밥)",
     "price": 15000,
     "type": "set",
-    "imgae": "/"
+    "image": "/"
   },
   {
-    "name": "너드세트2",
+    "name": "너드세트2 (오돌뼈 + 주먹밥)",
     "price": 13000,
     "type": "set",
-    "imgae": "/"
+    "image": "/"
   },
   {
-    "name": "갱세트1",
+    "name": "갱세트1 (닭발 + 오뎅탕 + 주먹밥)",
     "price": 25000,
     "type": "set",
-    "imgae": "/"
+    "image": "/"
   },
   {
-    "name": "갱세트2",
+    "name": "갱세트2 (오돌뼈 + 오뎅탕 + 주먹밥)",
     "price": 22000,
     "type": "set",
-    "imgae": "/"
+    "image": "/"
   },
   {
     "name": "닭강정",
     "price": 5000,
     "type": "single",
-    "imgae": "/"
+    "image": "/images/chicken.png"
   },
   {
     "name": "어묵탕",
     "price": 9000,
     "type": "single",
-    "imgae": "/"
+    "image": "/images/odeng.png"
   },
   {
     "name": "오돌뼈",
     "price": 10000,
     "type": "single",
-    "imgae": "/"
+    "image": "/images/odol.png"
   },
   {
     "name": "닭발",
     "price": 12000,
     "type": "single",
-    "imgae": "/"
+    "image": "/images/chickenfeet.png"
   },
   {
     "name": "주먹밥",
     "price": 4000,
     "type": "single",
-    "imgae": "/"
+    "image": "/images/rice.png"
+  },
+	{
+    "name": "콜라",
+    "price": 2000,
+    "type": "service",
+    "image": "/images/coke.png"
+  },
+	{
+    "name": "사이다",
+    "price": 2000,
+    "type": "service",
+    "image": "/images/cyder.png"
   }
+
 ]
