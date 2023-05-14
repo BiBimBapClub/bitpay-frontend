@@ -33,7 +33,8 @@ export default function Header({ startTime }) {
   return (
     <div className="bg-mainOrange h-fit p-5 flex justify-between items-center">
       <div className="bg-white text-sm rounded-3xl px-4 py-2">
-        {hours}:{minutes}
+        {hours.toString().padStart(2, "0")}:
+        {minutes.toString().padStart(2, "0")}
       </div>
       <div className="text-white text-2xl font-bold">
         테이블 {queryData.tableId}

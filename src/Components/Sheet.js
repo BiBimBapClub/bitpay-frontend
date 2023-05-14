@@ -14,6 +14,7 @@ export default function Sheet({
   setOrderList,
   setSelectedMenu,
   setRemovedMenu,
+  closeSheet,
 }) {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -26,17 +27,42 @@ export default function Sheet({
     return (value * 524288).toString(16);
   };
 
+  const createOrder = () => {
+    // reset orderList's count
+    setOrderList((prev) =>
+      prev.map((value) => {
+        return {
+          ...value,
+          count: 0,
+        };
+      })
+    );
+    closeSheet();
+  };
+
   const onClickToss = () => {
     const bank = "신한";
     const accountNo = "1101889";
-    window.location.href = `supertoss://send?bank=${bank}&accountNo=${accountNo}&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`;
+
+    window.open(
+      `supertoss://send?bank=${bank}&accountNo=${accountNo}&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`,
+      "_blank"
+    );
+
+    createOrder();
   };
 
   const onClickKakao = () => {
     const userId = "Ej8Z73HLr";
     const amount = toHexValue(totalPrice);
 
-    window.location.href = `https://qr.kakaopay.com/${userId}${amount}`;
+    window.open(`https://qr.kakaopay.com/${userId}${amount}`, "_blank");
+
+    createOrder();
+  };
+
+  const onClickSend = () => {
+    createOrder();
   };
 
   return (
@@ -49,7 +75,7 @@ export default function Sheet({
           </button>
         </div>
         <div className="text-white w-1/3 flex justify-end px-4 py-2">
-          {totalPrice}원
+          {totalPrice.toLocaleString()}원
         </div>
       </div>
       <ul className="w-full pb-24">
@@ -70,7 +96,7 @@ export default function Sheet({
         <button
           type="button"
           className="bg-mainOrange text-white text-lg w-11/12 h-14 rounded-xl m-6"
-          onClick={() => setIsOpen(true)}
+          onClick={() => totalCount > 0 && setIsOpen(true)}
         >
           주문하기
         </button>
@@ -81,13 +107,15 @@ export default function Sheet({
         message={"주문하시겠어요?"}
         description={() => (
           <span className="font-light text-gray-500 pb-4">
-            카카오페이의 경우 입금자 명을{" "}
+            - 카카오페이의 경우{" "}
+            <span className="text-red-500 font-bold">입금자 명</span>을{" "}
             <strong>{queryData.tableId}테이블</strong>로 변경해주세요!
+            <br />- 별도로 송금하는 경우 <strong>124-123242123-12 신한</strong>
+            으로 {totalPrice.toLocaleString()}원을 송금해주세요!
           </span>
         )}
         button={() => (
           <>
-            {" "}
             <button
               className="p-3 rounded-lg text-white mb-4"
               onClick={onClickToss}
@@ -103,7 +131,13 @@ export default function Sheet({
               카카오페이로 송금하기
             </button>
             <button
-              className="p-3 bg-black rounded-lg text-white shadow-none"
+              className="p-3 bg-mainOrange rounded-lg text-white mb-4"
+              onClick={onClickSend}
+            >
+              별도로 송금하기
+            </button>
+            <button
+              className="p-3 bg-black rounded-lg text-white "
               onClick={() => setIsOpen(false)}
             >
               취소

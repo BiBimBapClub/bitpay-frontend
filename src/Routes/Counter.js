@@ -1,15 +1,23 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useLayoutEffect, useState } from "react";
 import Header from "../Components/pos/Header";
 import TableHeader from "../Components/pos/TableHeader";
 import PaymentRequest from "../Components/pos/PaymentRequest";
 import Modal from "../Components/Modal";
 
 export default function Counter() {
-  const [open, setOpen] = useState(false);
-const [pwInput, setPwInput] = useState("");
-const [openModal, setOpenModal] = useState(true);
-const pw = "sexysunjae"
+  const [pwInput, setPwInput] = useState("");
+  const [openModal, setOpenModal] = useState(true);
+
+  const pw = "sexysunjae";
+
+  useLayoutEffect(() => {
+    const savedPwd = localStorage.getItem("PWD");
+
+    if (savedPwd && JSON.parse(savedPwd) === pw) {
+      setOpenModal(false);
+    }
+  }, []);
+
   return (
     <div>
       <Header></Header>
@@ -32,9 +40,7 @@ const pw = "sexysunjae"
             />
             <p
               class={`mt-2 ${
-                pw !== pwInput && pwInput !== ""
-                  ? "visible"
-                  : "invisible"
+                pw !== pwInput && pwInput !== "" ? "visible" : "invisible"
               } peer-invalid:visible text-pink-600 text-sm mb-2`}
             >
               비밀번호를 입력해주세요
@@ -44,6 +50,7 @@ const pw = "sexysunjae"
               onClick={() => {
                 if (pw === pwInput) {
                   setOpenModal(false);
+                  localStorage.setItem("PWD", JSON.stringify(pwInput));
                 }
               }}
             >

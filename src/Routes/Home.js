@@ -6,8 +6,6 @@ import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import Sheet from "../Components/Sheet";
 import Menus from "../Menus.json";
-import getRemainingFoods from "../Shared/apis/getRemainingFoods";
-import getTables from "../Shared/apis/getTables";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "../Components/Modal";
@@ -32,6 +30,12 @@ export default function Home() {
   });
 
   useEffect(() => {
+    const savedTableId = localStorage.getItem("TABLE_ID");
+
+    if (savedTableId && JSON.parse(savedTableId) === queryData.tableId) {
+      setOpenModal(false);
+    }
+
     Menus.forEach((Menu) => {
       setOrderList((current) => [
         ...current,
@@ -95,6 +99,7 @@ export default function Home() {
           setOrderList={setOrderList}
           setSelectedMenu={setSelectedMenu}
           setRemovedMenu={setRemovedMenu}
+          closeSheet={() => setOpen(false)}
         />
       </BottomSheet>
       <Modal
@@ -127,6 +132,10 @@ export default function Home() {
               onClick={() => {
                 if (queryData.tableId === tableIdInput) {
                   setOpenModal(false);
+                  localStorage.setItem(
+                    "TABLE_ID",
+                    JSON.stringify(queryData.tableId)
+                  );
                 }
               }}
             >
