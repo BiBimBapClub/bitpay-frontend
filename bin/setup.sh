@@ -34,7 +34,7 @@ echo "=============================================="
 cd /etc/nginx/sites-enabled
 sudo rm -rf default
 
-sudo cp /home/ubuntu/bitpay-frontend/.config/front/default .
+sudo cp /home/ubuntu/bitpay-frontend/.config/default .
 
 echo "=============================================="
 echo "ssl Certifications"
@@ -53,7 +53,7 @@ echo "=============================================="
 
 cd /home/ubuntu/bitpay-frontend
 npm install
-npm build
+npm run build
 
 echo "=============================================="
 echo "ssl Deploy"
