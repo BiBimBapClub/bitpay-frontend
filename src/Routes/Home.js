@@ -11,7 +11,7 @@ import getTables from "../Shared/apis/getTables";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "../Components/Modal";
-import getOrders from "../Shared/apis/getOrders";
+import {getOrders} from "../Shared/apis/getOrders";
 
 export default function Home() {
   const location = useLocation();

@@ -1,20 +1,21 @@
 import React, { useState,useEffect } from "react";
-import axios from "axios";
+import axios from 'axios';
+import {getOrders,getPaymentRequest,getServeRequest} from "../../Shared/apis/getOrders";
 
 export default function PaymentRequest() {
-/*  useEffect(() => {
-    axios
-    .get(
-      "http://117.16.137.229:8080/orders?status=ORDER_STATUS_BEFORE_PAYMENT",
-      
-    )
-    .then((res) => {
-      console.log(res)
-     
-    });
-  }, []);*/
+  useEffect(() => {
+    (async function init() {
+      const payment = await getPaymentRequest();
+      const serve = await getServeRequest();
+      console.log(payment);
+      setOrderItems((payment.data))
+      setServeItems((serve.data))
+     console.log(orderItems)
+     console.log(serveItems)
+    })();
+  }, []);
     const [orderItems, setOrderItems] = useState([
-        {
+       /* {
           orderNumber: 1,
           tableNumber: 33,
           orderMenu: '닭발x1, 콜라x1',
@@ -27,31 +28,33 @@ export default function PaymentRequest() {
             orderMenu: '닭발x1',
             totalAmount: 10000,
             paymentConfirmed: false,
-          },
+          },*/
         // 다른 주문 아이템들...
       ]);
     const [serveItems, setServeItems] = useState([]);
   
     const handleConfirm = (item) => {
-      setOrderItems(orderItems.filter((order) => order !== item));
-      setServeItems([...serveItems, item]);
+      //setOrderItems(orderItems.filter((order) => order !== item));
+      //setServeItems([...serveItems, item]);
+      
+      
     };
     const handleCancel = (item) => {
       setOrderItems(orderItems.filter((order) => order !== item));
     };
     const handleServeComplete = (item) => {
-        setServeItems(serveItems.filter((serve) => serve !== item));
+        //setServeItems(serveItems.filter((serve) => serve !== item));
       };
     
     return (
         <div className="flex">
           <div className="w-1/2 mt-3">
-            {orderItems.map((item) => (
-              <div key={item.orderNumber} className="overflow-auto w-full h-fit text-black text-xl font-bold text-center mb-3 ">
-                <div className="w-1/5 float-left">{item.orderNumber}</div>
+            {orderItems?.map((item) => (
+              <div key={item.id} className="overflow-auto w-full h-fit text-black text-xl font-bold text-center mb-3 ">
+                <div className="w-1/5 float-left">{item.id}</div>
                 <div className="w-1/5 float-left">{item.tableNumber}</div>
-                <div className="w-1/5 float-left">{item.orderMenu}</div>
-                <div className="w-1/5 float-left">{item.totalAmount}</div>
+                <div className="w-1/5 float-left">{/*item.orderMenu*/}</div>
+                <div className="w-1/5 float-left">{item.totalPrice}</div>
                 <div className="w-1/5 float-left">
                   {!item.paymentConfirmed && (
                     <button
@@ -73,12 +76,12 @@ export default function PaymentRequest() {
           </div>
     
           <div className="w-1/2 mt-3">
-            {serveItems.map((item) => (
-              <div key={item.orderNumber} className="overflow-auto w-full text-black text-xl font-bold text-center mb-3">
-                <div className="w-1/5 float-left">{item.orderNumber}</div>
+            {serveItems?.map((item) => (
+              <div key={item.id} className="overflow-auto w-full text-black text-xl font-bold text-center mb-3">
+                <div className="w-1/5 float-left">{item.id}</div>
                 <div className="w-1/5 float-left">{item.tableNumber}</div>
-                <div className="w-1/5 float-left">{item.orderMenu}</div>
-                <div className="w-1/5 float-left">{item.totalAmount}</div>
+                <div className="w-1/5 float-left">{/*item.orderMenu*/}</div>
+                <div className="w-1/5 float-left">{item.totalPrice}</div>
                 <div className="w-1/5 float-left">
                     {!item.paymentConfirmed && (
                     <button
