@@ -31,7 +31,17 @@ export default function Sheet({
 
   const createOrder = async () => {
     // send order to server
-    const res = await postOrder();
+    const res = await postOrder(
+      queryData.tableId,
+      orderList
+        .filter((order) => order.count > 0)
+        .map((order) => {
+          return {
+            menu_id: order.id,
+            count: order.count,
+          };
+        })
+    );
     console.log(res);
 
     // reset orderList's count
