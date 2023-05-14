@@ -89,11 +89,11 @@ const Table = ({ data }) => {
 };
 const App = () => {
   const tableData = [
-    { number: 1, status: '퇴장'},
+    { number: 1, status: '완료'},
     { number: 2, status: '완료' },
-    { number: 3, status: '입장' },
-    { number: 4, status: '입장'},
-    { number: 5, status: '퇴장' },
+    { number: 3, status: '완료' },
+    { number: 4, status: '완료'},
+    { number: 5, status: '완료' },
     { number: 6, status: '완료' },
     { number: 7, status: '입장'},
     { number: 8, status: '입장'},

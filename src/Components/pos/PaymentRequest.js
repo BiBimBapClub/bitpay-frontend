@@ -1,6 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import axios from "axios";
 
 export default function PaymentRequest() {
+/*  useEffect(() => {
+    axios
+    .get(
+      "http://117.16.137.229:8080/orders?status=ORDER_STATUS_BEFORE_PAYMENT",
+      
+    )
+    .then((res) => {
+      console.log(res)
+     
+    });
+  }, []);*/
     const [orderItems, setOrderItems] = useState([
         {
           orderNumber: 1,
