@@ -32,7 +32,7 @@
   {
     "name": "닭강정",
     "price": 5000,
-    "type": "single",
+    "type": "side",
     "image": "/images/chicken.png"
   },
   {
@@ -56,7 +56,7 @@
   {
     "name": "주먹밥",
     "price": 4000,
-    "type": "single",
+    "type": "side",
     "image": "/images/rice.png"
   },
 	{
