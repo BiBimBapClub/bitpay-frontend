@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/:tableId" element={<Home />} />
         <Route path="/order" element={<Order />} />
         <Route path="/admin" element={<AdminTable />}/>
         <Route path="/counter" element={<Counter/>}/>
