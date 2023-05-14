@@ -113,6 +113,11 @@ export default function Home() {
     setOpen((current) => !current);
   };
 
+  const refetchMyTable = async () => {
+    const tableData = await getTable(queryData.tableId);
+    setTable(tableData);
+  };
+
   return (
     <>
       <Header timer={timer}></Header>
@@ -134,6 +139,7 @@ export default function Home() {
           setSelectedMenu={setSelectedMenu}
           setRemovedMenu={setRemovedMenu}
           closeSheet={() => setOpen(false)}
+          refetchMyTable={refetchMyTable}
         />
       </BottomSheet>
       <Modal
