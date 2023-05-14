@@ -3,7 +3,7 @@ import Menus from "../Menus.json";
 
 import Menu from "./Menu";
 
-export default function Nav() {
+export default function Nav({ setSelectedMenu }) {
   const [tabsData, setTabsData] = useState([
     {
       label: "세트메뉴",
@@ -31,11 +31,29 @@ export default function Nav() {
     const service = [];
     Menus.forEach((menu) => {
       if (menu.type === "set") {
-        setMenu.push(<Menu name={menu.name} price={menu.price}></Menu>);
+        setMenu.push(
+          <Menu
+            name={menu.name}
+            price={menu.price}
+            setSelectedMenu={setSelectedMenu}
+          ></Menu>
+        );
       } else if (menu.type === "single") {
-        singleMenu.push(<Menu name={menu.name} price={menu.price}></Menu>);
+        singleMenu.push(
+          <Menu
+            name={menu.name}
+            price={menu.price}
+            setSelectedMenu={setSelectedMenu}
+          ></Menu>
+        );
       } else if (menu.type === "service") {
-        service.push(<Menu name={menu.name} price={menu.price}></Menu>);
+        service.push(
+          <Menu
+            name={menu.name}
+            price={menu.price}
+            setSelectedMenu={setSelectedMenu}
+          ></Menu>
+        );
       }
     });
     setTabsData([
