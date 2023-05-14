@@ -10,6 +10,7 @@ import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "../Components/Modal";
 import { getTable } from "../Shared/apis/getTables";
+import { getMenus } from "../Shared/apis/getMenus";
 
 export default function Home() {
   const location = useLocation();
@@ -73,6 +74,7 @@ export default function Home() {
       setOrderList((current) => [
         ...current,
         {
+          id: Menu.id,
           name: Menu.name,
           price: Menu.price,
           count: 0,
@@ -82,6 +84,8 @@ export default function Home() {
     });
 
     (async function init() {
+      const menusData = await getMenus();
+      console.log(menusData);
       const tableData = await getTable(queryData.tableId);
       setTable(tableData);
     })();
