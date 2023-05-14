@@ -12,7 +12,9 @@ export default function Footer({ onClickBtn, totalCount, totalPrice }) {
             <FontAwesomeIcon icon={faAngleUp} />
           </button>
         </div>
-        <div className="text-mainOrange px-4 py-2">{totalPrice}원</div>
+        <div className="text-mainOrange px-4 py-2">
+          {totalPrice.toLocaleString()}원
+        </div>
       </div>
     </div>
   );

@@ -75,7 +75,7 @@ export default function Sheet({
           </button>
         </div>
         <div className="text-white w-1/3 flex justify-end px-4 py-2">
-          {totalPrice}원
+          {totalPrice.toLocaleString()}원
         </div>
       </div>
       <ul className="w-full pb-24">
@@ -111,7 +111,7 @@ export default function Sheet({
             <span className="text-red-500 font-bold">입금자 명</span>을{" "}
             <strong>{queryData.tableId}테이블</strong>로 변경해주세요!
             <br />- 별도로 송금하는 경우 <strong>124-123242123-12 신한</strong>
-            으로 {totalPrice}원을 송금해주세요!
+            으로 {totalPrice.toLocaleString()}원을 송금해주세요!
           </span>
         )}
         button={() => (

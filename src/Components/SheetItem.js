@@ -48,7 +48,7 @@ export default function SheetItem({
         />
         <div className="ml-3">
           <div className="text-base">{menu.name}</div>
-          <div className="text-sm">{menu.price}원</div>
+          <div className="text-sm">{menu.price.toLocaleString()}원</div>
         </div>
       </div>
 
@@ -73,7 +73,7 @@ export default function SheetItem({
       </div>
 
       <div className="text-base w-1/4 flex justify-end">
-        ₩ {menu.count * menu.price}원
+        ₩ {(menu.count * menu.price).toLocaleString()}원
       </div>
     </div>
   );
