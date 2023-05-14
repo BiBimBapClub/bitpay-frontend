@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate,useLocation } from "react-router-dom";
 
 const Table = ({ data }) => {
+  const navigate = useNavigate();
+  const navigateToDetail = (index) => {
+    navigate("/"+index)
+  };
   const [tableData, setTableData] = useState(data);
 
   const handleStatusChange = (index, newStatus) => {
@@ -11,7 +16,7 @@ const Table = ({ data }) => {
       return newData;
     });
   };
-
+  
   
 
   const renderStatusRow = (status, index) => {
@@ -62,8 +67,8 @@ const Table = ({ data }) => {
       <table className="w-1/2 mr-4">
         <tbody>
           {oddRows.map((row, index) => (
-            <tr key={index} className="bg-gray-100">
-              <td className="border px-4 py-2">{row.number}</td>
+            <tr key={index} className="bg-gray-100" >
+              <td className="border px-4 py-2 cursor-pointer " onClick={() => navigateToDetail(row.number)}>{row.number}</td>
               {renderStatusRow(row.status, index * 2, row.time)}
             </tr>
           ))}
@@ -72,8 +77,8 @@ const Table = ({ data }) => {
       <table className="w-1/2 ">
         <tbody>
           {evenRows.map((row, index) => (
-            <tr key={index} className="bg-gray-100">
-              <td className="border px-4 py-2">{row.number}</td>
+            <tr key={index} className="bg-gray-100"  >
+              <td className="border px-4 py-2 cursor-pointer" onClick={() => navigateToDetail(row.number)} >{row.number}</td>
               {renderStatusRow(row.status, index * 2 + 1, row.time)}
             </tr>
           ))}

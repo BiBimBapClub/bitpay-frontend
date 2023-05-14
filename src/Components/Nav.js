@@ -14,6 +14,10 @@ export default function Nav({ setSelectedMenu }) {
       content: [],
     },
     {
+      label: "사이드",
+      content: [],
+    },
+    {
       label: "음료수",
       content: [],
     },
@@ -29,6 +33,8 @@ export default function Nav({ setSelectedMenu }) {
     const setMenu = [];
     const singleMenu = [];
     const service = [];
+    const sideMenu =[];
+
     Menus.forEach((menu) => {
       if (menu.type === "set") {
         setMenu.push(
@@ -37,10 +43,20 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
+            
           ></Menu>
         );
       } else if (menu.type === "single") {
         singleMenu.push(
+          <Menu
+            name={menu.name}
+            price={menu.price}
+            setSelectedMenu={setSelectedMenu}
+            src={menu.image}
+          ></Menu>
+        );
+      } else if (menu.type === "side") {
+        sideMenu.push(
           <Menu
             name={menu.name}
             price={menu.price}
@@ -67,6 +83,10 @@ export default function Nav({ setSelectedMenu }) {
       {
         label: "단품메뉴",
         content: singleMenu,
+      },
+      {
+        label: "사이드",
+        content: sideMenu,
       },
       {
         label: "음료수",
