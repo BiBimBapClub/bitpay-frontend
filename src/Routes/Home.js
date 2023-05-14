@@ -9,16 +9,22 @@ import Menus from "../Menus.json";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "../Components/Modal";
-import {getOrders} from "../Shared/apis/getOrders";
+import { getTable } from "../Shared/apis/getTables";
+import { getMenus } from "../Shared/apis/getMenus";
 
 export default function Home() {
   const location = useLocation();
+  const [table, setTable] = useState();
   const [open, setOpen] = useState(false);
   const [tableIdInput, setTableIdInput] = useState("");
   const [openModal, setOpenModal] = useState(true);
   const [orderList, setOrderList] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState("");
   const [removedMenu, setRemovedMenu] = useState("");
+  const [timer, setTimer] = useState({
+    hours: 0,
+    minutes: 1,
+  });
   const totalCount = orderList.reduce((acc, val) => acc + val.count, 0);
   const totalPrice = orderList.reduce(
     (acc, val) => acc + val.count * val.price,
@@ -28,6 +34,34 @@ export default function Home() {
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
   });
+
+  const startTime = new Date(table?.updatedTime);
+  startTime.setHours(startTime.getHours() + 2);
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      var now = new Date();
+
+      var differenceInMilliseconds = startTime.getTime() - now.getTime();
+
+      var differenceInMinutes = Math.floor(
+        differenceInMilliseconds / (1000 * 60)
+      );
+      var differenceInHours = Math.floor(differenceInMinutes / 60);
+      var remainingMinutes = differenceInMinutes % 60;
+
+      setTimer({
+        hours: differenceInHours,
+        minutes: remainingMinutes,
+      });
+    }, 1000);
+
+    if (timer.hours === 0 && timer.minutes === 0) {
+      clearInterval(countdown);
+    }
+
+    return () => clearInterval(countdown);
+  }, [startTime, timer.hours, timer.minutes]);
 
   useEffect(() => {
     const savedTableId = localStorage.getItem("TABLE_ID");
@@ -40,6 +74,7 @@ export default function Home() {
       setOrderList((current) => [
         ...current,
         {
+          id: Menu.id,
           name: Menu.name,
           price: Menu.price,
           count: 0,
@@ -49,8 +84,10 @@ export default function Home() {
     });
 
     (async function init() {
-      const orders = await getOrders();
-      console.log(orders);
+      const menusData = await getMenus();
+      console.log(menusData);
+      const tableData = await getTable(queryData.tableId);
+      setTable(tableData);
     })();
   }, []);
 
@@ -76,13 +113,9 @@ export default function Home() {
     setOpen((current) => !current);
   };
 
-  const startTime = new Date("Mon May 15 2023 03:02:38 GMT+0900 (한국 표준시)");
-
-  startTime.setHours(startTime.getHours() + 2);
-
   return (
     <>
-      <Header startTime={startTime}></Header>
+      <Header timer={timer}></Header>
       <Nav setSelectedMenu={setSelectedMenu}></Nav>
 
       <Footer
@@ -92,6 +125,7 @@ export default function Home() {
       ></Footer>
       <BottomSheet open={open} snapPoints={() => 700} blocking={false}>
         <Sheet
+          timer={timer}
           onClickBtn={onClickBottomSheet}
           totalCount={totalCount}
           totalPrice={totalPrice}
@@ -113,7 +147,6 @@ export default function Home() {
             <input
               type="text"
               name="search"
-              placeholder={queryData.tableId}
               className="peer block bg-white w-full border border-slate-300 rounded-md py-2 pl-4 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
               vaue={tableIdInput}
               onChange={(e) => setTableIdInput(e.target.value)}

@@ -7,13 +7,61 @@ const Table = () => {
   const navigateToDetail = (index) => {
     navigate("/admin/"+index)
   };
-  const [tableData, setTableData] = useState();
+  const [tableData, setTableData] = useState([
+    { number: "table:1", status: '청소완료'},
+    { number: "table:2", status: '청소완료'},
+    { number: "table:3", status: '청소완료' },
+    { number: "table:4", status: '청소완료' },
+    { number: "table:5", status: '청소완료'},
+    { number: "table:6", status: '청소완료' },
+    { number: "table:7", status: '청소완료' },
+    { number: "table:8", status: '청소완료'},
+    { number: "table:9", status: '청소완료' },
+    { number: "table:10", status: '청소완료' },
+    { number: "table:11", status: '청소완료'},
+    { number: "table:12", status: '청소완료'},
+    { number: "table:13", status: '청소완료'},
+    { number: "table:14", status: '청소완료'},
+    { number: "table:15", status: '청소완료'},
+    { number: "table:16", status: '청소완료'},
+    { number: "table:17", status: '청소완료'},
+    { number: "table:18", status: '청소완료'},
+    { number: "table:19", status: '청소완료'},
+    { number: "table:20", status: '청소완료'},
+    { number: "table:21", status: '청소완료'},
+    { number: "table:22", status: '청소완료'},
+    { number: "table:23", status: '청소완료'},
+    { number: "table:24", status: '청소완료'},
+    { number: "table:25", status: '청소완료'},
+    { number: "table:26", status: '청소완료'},
+    { number: "table:27", status: '청소완료'},
+    { number: "table:28", status: '청소완료'},
+    { number: "table:29", status: '청소완료'},
+    { number: "table:30", status: '청소완료'},
+    { number: "table:31", status: '청소완료'},
+    { number: "table:32", status: '청소완료'},
+    { number: "table:33", status: '청소완료'},
+    { number: "table:34", status: '청소완료'},
+    { number: "table:35", status: '청소완료'},
+    { number: "table:36", status: '청소완료'},
+    { number: "table:37", status: '청소완료'},
+    { number: "table:38", status: '청소완료'},
+    { number: "table:39", status: '청소완료'},
+    { number: "table:40", status: '청소완료'},
+    { number: "table:41", status: '청소완료'},
+    { number: "table:42", status: '청소완료'},
+    { number: "table:43", status: '청소완료'},
+    { number: "table:44", status: '청소완료'},
+    { number: "table:45", status: '청소완료'},
+    { number: "table:46", status: '청소완료'},
+  ]
+  );
+  const fetchData = async () => {
+    const tables = await getTables();
+    setTableData(tables.data);
+    console.log(tables)
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const tables = await getTables();
-      setTableData(tables.data);
-      console.log(tables)
-    };
   
     const interval = setInterval(fetchData, 5000);
   
@@ -23,16 +71,19 @@ const Table = () => {
   const handleCleaned = (index) => {
     let num = index.split(":")[1]
     console.log(num)
+    fetchData()
    postCleanFinish(num)
   };
   const handleOut = (index) => {
     let num = index.split(":")[1]
     console.log(num)
+    fetchData()
     postOut(num)
    };
    const handleIn = (index) => {
     let num = index.split(":")[1]
     console.log(num)
+    fetchData()
     postIn(num)
    };
   const handleStatusChange = (index, newStatus) => {

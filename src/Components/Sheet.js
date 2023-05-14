@@ -5,8 +5,10 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "./Modal";
+import postOrder from "../Shared/apis/postOrder";
 
 export default function Sheet({
+  timer,
   onClickBtn,
   totalCount,
   totalPrice,
@@ -27,7 +29,21 @@ export default function Sheet({
     return (value * 524288).toString(16);
   };
 
-  const createOrder = () => {
+  const createOrder = async () => {
+    // send order to server
+    const res = await postOrder(
+      queryData.tableId,
+      orderList
+        .filter((order) => order.count > 0)
+        .map((order) => {
+          return {
+            menu_id: order.id,
+            count: order.count,
+          };
+        })
+    );
+    console.log(res);
+
     // reset orderList's count
     setOrderList((prev) =>
       prev.map((value) => {
@@ -37,6 +53,7 @@ export default function Sheet({
         };
       })
     );
+
     closeSheet();
   };
 
@@ -96,7 +113,11 @@ export default function Sheet({
         <button
           type="button"
           className="bg-mainOrange text-white text-lg w-11/12 h-14 rounded-xl m-6"
-          onClick={() => totalCount > 0 && setIsOpen(true)}
+          onClick={() =>
+            totalCount > 0 &&
+            timer.hours + timer.minutes !== 0 &&
+            setIsOpen(true)
+          }
         >
           주문하기
         </button>
