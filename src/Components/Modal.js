@@ -1,7 +1,14 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-const Modal = ({ isOpen, closeModal, message, description, button }) => {
+const Modal = ({
+  isOpen,
+  closeModal,
+  message,
+  description,
+  button,
+  shouldCloseOnOverlayClick = true,
+}) => {
   const customStyles = {
     content: {
       top: "50%",
@@ -22,6 +29,7 @@ const Modal = ({ isOpen, closeModal, message, description, button }) => {
       isOpen={isOpen}
       onRequestClose={closeModal}
       style={customStyles}
+      shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
     >
       <div className="flex flex-col p-10 rounded-lg">
         <span className="font-bold text-xl pb-2">{message}</span>
