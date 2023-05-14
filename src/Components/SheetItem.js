@@ -29,7 +29,7 @@ export default function SheetItem({ menu, setSelectedMenu, setRemovedMenu }) {
 
   return (
     <div className="flex justify-center items-center my-3 px-3">
-      <div className="w-[40%] flex items-center">
+      <div className="w-1/2 flex items-center">
         <img src={img1} alt="menu1" className="h-20 w-20" />
         <div className="ml-3">
           <div className="text-base">{menus.name}</div>
@@ -37,7 +37,7 @@ export default function SheetItem({ menu, setSelectedMenu, setRemovedMenu }) {
         </div>
       </div>
 
-      <div className="w-[30%] flex justify-center items-center">
+      <div className="w-1/4 flex justify-center items-center">
         <button
           className="border bg-mainOrange text-white p-1"
           onClick={onClickMinusBtn}
@@ -57,7 +57,7 @@ export default function SheetItem({ menu, setSelectedMenu, setRemovedMenu }) {
         </button>
       </div>
 
-      <div className="text-base w-[30%] flex justify-end">
+      <div className="text-base w-1/4 flex justify-end">
         ₩ {menus.count * menus.price}원
       </div>
     </div>
