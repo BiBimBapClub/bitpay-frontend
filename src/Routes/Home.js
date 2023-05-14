@@ -7,6 +7,7 @@ import Footer from "../Components/Footer";
 import Sheet from "../Components/Sheet";
 import Menus from "../Menus.json";
 import getRemainingFoods from "../Shared/apis/getRemainingFoods";
+import getTables from "../Shared/apis/getTables";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -30,8 +31,10 @@ export default function Home() {
     });
 
     (async function init() {
-      const data = await getRemainingFoods();
-      console.log(data);
+      const foods = await getRemainingFoods();
+      console.log(foods);
+
+      const { data: tables } = await getTables();
     })();
   }, []);
 
