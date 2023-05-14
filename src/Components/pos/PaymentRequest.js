@@ -1,49 +1,41 @@
 import React, { useState,useEffect } from "react";
 import axios from 'axios';
-import {getOrders,getPaymentRequest,getServeRequest} from "../../Shared/apis/getOrders";
+import {getOrders,getPaymentRequest,getServeRequest,confirmPayment,confirmServe,cancelPayment} from "../../Shared/apis/getOrders";
 
 export default function PaymentRequest() {
-  useEffect(() => {
-    (async function init() {
-      const payment = await getPaymentRequest();
-      const serve = await getServeRequest();
-      console.log(payment);
-      setOrderItems((payment.data))
-      setServeItems((serve.data))
-     console.log(orderItems)
-     console.log(serveItems)
-    })();
-  }, []);
-    const [orderItems, setOrderItems] = useState([
-       /* {
-          orderNumber: 1,
-          tableNumber: 33,
-          orderMenu: '닭발x1, 콜라x1',
-          totalAmount: 15000,
-          paymentConfirmed: false,
-        },
-        {
-            orderNumber: 2,
-            tableNumber: 13,
-            orderMenu: '닭발x1',
-            totalAmount: 10000,
-            paymentConfirmed: false,
-          },*/
-        // 다른 주문 아이템들...
-      ]);
+   const [orderItems, setOrderItems] = useState([]);
     const [serveItems, setServeItems] = useState([]);
+    useEffect(() => {
+      const fetchData = async () => {
+        const payment = await getPaymentRequest();
+        const serve = await getServeRequest();
+        console.log(payment);
+        setOrderItems(payment.data);
+        setServeItems(serve.data);
+        console.log(orderItems);
+        console.log(serveItems);
+      };
+    
+      const interval = setInterval(fetchData, 5000);
+    
+      return () => clearInterval(interval);
+    }, []);
+   
   
     const handleConfirm = (item) => {
       //setOrderItems(orderItems.filter((order) => order !== item));
       //setServeItems([...serveItems, item]);
-      
+      confirmPayment(item.id);
+
       
     };
     const handleCancel = (item) => {
-      setOrderItems(orderItems.filter((order) => order !== item));
+      cancelPayment(item.id)
     };
     const handleServeComplete = (item) => {
         //setServeItems(serveItems.filter((serve) => serve !== item));
+        confirmServe(item.id)
+        console.log(serveItems)
       };
     
     return (
