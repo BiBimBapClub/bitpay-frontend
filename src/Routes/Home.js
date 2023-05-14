@@ -19,6 +19,10 @@ export default function Home() {
   const [orderList, setOrderList] = useState([]);
   const [selectedMenu, setSelectedMenu] = useState("");
   const [removedMenu, setRemovedMenu] = useState("");
+  const [timer, setTimer] = useState({
+    hours: 0,
+    minutes: 1,
+  });
   const totalCount = orderList.reduce((acc, val) => acc + val.count, 0);
   const totalPrice = orderList.reduce(
     (acc, val) => acc + val.count * val.price,
@@ -28,6 +32,34 @@ export default function Home() {
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
   });
+
+  const startTime = new Date("Mon May 15 2023 03:02:38 GMT+0900 (한국 표준시)");
+  startTime.setHours(startTime.getHours() + 2);
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      var now = new Date();
+
+      var differenceInMilliseconds = startTime.getTime() - now.getTime();
+
+      var differenceInMinutes = Math.floor(
+        differenceInMilliseconds / (1000 * 60)
+      );
+      var differenceInHours = Math.floor(differenceInMinutes / 60);
+      var remainingMinutes = differenceInMinutes % 60;
+
+      setTimer({
+        hours: differenceInHours,
+        minutes: remainingMinutes,
+      });
+    }, 1000);
+
+    if (timer.hours === 0 && timer.minutes === 0) {
+      clearInterval(countdown);
+    }
+
+    return () => clearInterval(countdown);
+  }, [startTime, timer.hours, timer.minutes]);
 
   useEffect(() => {
     const savedTableId = localStorage.getItem("TABLE_ID");
@@ -76,13 +108,9 @@ export default function Home() {
     setOpen((current) => !current);
   };
 
-  const startTime = new Date("Mon May 15 2023 03:02:38 GMT+0900 (한국 표준시)");
-
-  startTime.setHours(startTime.getHours() + 2);
-
   return (
     <>
-      <Header startTime={startTime}></Header>
+      <Header timer={timer}></Header>
       <Nav setSelectedMenu={setSelectedMenu}></Nav>
 
       <Footer
@@ -92,6 +120,7 @@ export default function Home() {
       ></Footer>
       <BottomSheet open={open} snapPoints={() => 700} blocking={false}>
         <Sheet
+          timer={timer}
           onClickBtn={onClickBottomSheet}
           totalCount={totalCount}
           totalPrice={totalPrice}
