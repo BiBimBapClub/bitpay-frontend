@@ -27,13 +27,11 @@ export default function Home() {
         },
       ]);
     });
-    console.log(orderList);
   }, []);
 
   useEffect(() => {
     orderList.forEach((item) => {
       if (item.name === selectedMenu) {
-        console.log(item.count);
         item.count += 1;
         setTotalCount((current) => current + 1);
         setTotalPrice((current) => current + item.price);
@@ -44,8 +42,7 @@ export default function Home() {
 
   useEffect(() => {
     orderList.forEach((item) => {
-      if (item.count > 0 && item.name === removedMenu) {
-        console.log(item.count);
+      if (item.count > 1 && item.name === removedMenu) {
         item.count -= 1;
         setTotalCount((current) => current - 1);
         setTotalPrice((current) => current - item.price);
