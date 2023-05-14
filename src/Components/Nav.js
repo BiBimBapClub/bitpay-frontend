@@ -37,6 +37,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
+            
           ></Menu>
         );
       } else if (menu.type === "single") {
