@@ -9,7 +9,8 @@ import Menus from "../Menus.json";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "../Components/Modal";
-import {getOrders} from "../Shared/apis/getOrders";
+import getOrders from "../Shared/apis/getOrders";
+import { getTable } from "../Shared/apis/getTable";
 
 export default function Home() {
   const location = useLocation();
@@ -81,8 +82,8 @@ export default function Home() {
     });
 
     (async function init() {
-      const orders = await getOrders();
-      console.log(orders);
+      const table = await getTable(queryData.tableId);
+      console.log(table);
     })();
   }, []);
 
