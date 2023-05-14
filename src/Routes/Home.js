@@ -11,6 +11,7 @@ import getTables from "../Shared/apis/getTables";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "../Components/Modal";
+import getOrders from "../Shared/apis/getOrders";
 
 export default function Home() {
   const location = useLocation();
@@ -44,11 +45,8 @@ export default function Home() {
     });
 
     (async function init() {
-      const foods = await getRemainingFoods();
-      console.log(foods);
-
-      const { data: tables } = await getTables();
-      const table = tables.find((value) => value.tableId === queryData.tableId);
+      const orders = await getOrders();
+      console.log(orders);
     })();
   }, []);
 
