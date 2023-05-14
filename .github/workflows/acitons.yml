@@ -38,7 +38,7 @@ jobs:
           host: ${{ secrets.FRONT_HOST }}
           username: ${{ secrets.USER }}
           script: |
-            cd SugarFree
+            cd bitpay-frontend
             git reset --hard
             git fetch
             git pull
@@ -50,4 +50,4 @@ jobs:
           username: ${{ secrets.USER }}
           script: |
             cd bitpay-frontend
-            npm build
+            npm run build
