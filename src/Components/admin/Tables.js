@@ -4,7 +4,7 @@ import { useNavigate,useLocation } from "react-router-dom";
 const Table = ({ data }) => {
   const navigate = useNavigate();
   const navigateToDetail = (index) => {
-    navigate("/"+index)
+    navigate("/admin/"+index)
   };
   const [tableData, setTableData] = useState(data);
 
