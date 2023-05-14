@@ -69,7 +69,6 @@ export default function Sheet({
       <Modal
         isOpen={isOpen}
         closeModal={() => setIsOpen(false)}
-        onClickOk={onClickOrder}
         message={"주문하시겠어요?"}
         description={() => (
           <span className="font-light text-gray-500 pb-4">
