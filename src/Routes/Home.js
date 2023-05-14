@@ -44,7 +44,7 @@ export default function Home() {
 
   useEffect(() => {
     orderList.forEach((item) => {
-      if (item.count > 0 && item.name === selectedMenu) {
+      if (item.count > 0 && item.name === removedMenu) {
         console.log(item.count);
         item.count -= 1;
         setTotalCount((current) => current - 1);

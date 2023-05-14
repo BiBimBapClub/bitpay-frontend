@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+바텀시트에서 -버튼하면 home의 Orderlist에 반영이 안됨.
+주문내역 페이지 갔다오면 장바구니 날라감
+바텀시트 수량따라서 -와 휴지통 버튼으로 바꿔줘야함
