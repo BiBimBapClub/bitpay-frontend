@@ -84,11 +84,16 @@ export default function Home() {
     });
 
     (async function init() {
-      const menusData = await getMenus();
-      console.log(menusData);
       const tableData = await getTable(queryData.tableId);
       setTable(tableData);
     })();
+
+    const refetchTable = setInterval(async () => {
+      const tableData = await getTable(queryData.tableId);
+      setTable(tableData);
+    }, 1000 * 60);
+
+    return () => clearInterval(refetchTable);
   }, []);
 
   useEffect(() => {
@@ -113,11 +118,6 @@ export default function Home() {
     setOpen((current) => !current);
   };
 
-  const refetchMyTable = async () => {
-    const tableData = await getTable(queryData.tableId);
-    setTable(tableData);
-  };
-
   return (
     <>
       <Header timer={timer}></Header>
@@ -139,7 +139,6 @@ export default function Home() {
           setSelectedMenu={setSelectedMenu}
           setRemovedMenu={setRemovedMenu}
           closeSheet={() => setOpen(false)}
-          refetchMyTable={refetchMyTable}
         />
       </BottomSheet>
       <Modal

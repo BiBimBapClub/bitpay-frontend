@@ -17,7 +17,6 @@ export default function Sheet({
   setSelectedMenu,
   setRemovedMenu,
   closeSheet,
-  refetchMyTable,
 }) {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -58,8 +57,6 @@ export default function Sheet({
     closeSheet();
 
     setIsOpen(false);
-
-    refetchMyTable();
   };
 
   const onClickToss = () => {
