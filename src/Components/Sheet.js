@@ -96,7 +96,7 @@ export default function Sheet({
         <button
           type="button"
           className="bg-mainOrange text-white text-lg w-11/12 h-14 rounded-xl m-6"
-          onClick={() => setIsOpen(true)}
+          onClick={() => totalCount > 0 && setIsOpen(true)}
         >
           주문하기
         </button>
