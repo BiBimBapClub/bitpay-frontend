@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
+import Modal from "./Modal";
 
 export default function Sheet({
   onClickBtn,
@@ -15,6 +16,7 @@ export default function Sheet({
 }) {
   const location = useLocation();
   const [sheetItems, setSheetItems] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -59,11 +61,47 @@ export default function Sheet({
         <button
           type="button"
           className="bg-mainOrange text-white text-lg w-11/12 h-14 rounded-xl m-6"
-          onClick={onClickOrder}
+          onClick={() => setIsOpen(true)}
         >
           주문하기
         </button>
       </div>
+      <Modal
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        message={"주문하시겠어요?"}
+        description={() => (
+          <span className="font-light text-gray-500 pb-4">
+            카카오페이의 경우 입금자 명을{" "}
+            <strong>{queryData.tableId}테이블</strong>로 변경해주세요!
+          </span>
+        )}
+        button={() => (
+          <>
+            {" "}
+            <button
+              className="p-3 rounded-lg text-white mb-4"
+              onClick={() => {}}
+              style={{ backgroundColor: "#0064FF" }}
+            >
+              Toss로 송금하기
+            </button>
+            <button
+              className="p-3 rounded-lg text-black mb-4"
+              onClick={() => {}}
+              style={{ backgroundColor: "#FFEB04" }}
+            >
+              카카오페이로 송금하기
+            </button>
+            <button
+              className="p-3 bg-black rounded-lg text-white shadow-none"
+              onClick={() => setIsOpen(false)}
+            >
+              취소
+            </button>
+          </>
+        )}
+      />
     </div>
   );
 }

@@ -5,3 +5,9 @@
 body {
   background-color: #efefef;
 }
+
+[data-rsbs-overlay],
+[data-rsbs-backdrop],
+[data-rsbs-root]:after {
+  z-index: 0 !important;
+}
