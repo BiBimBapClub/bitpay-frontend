@@ -6,15 +6,17 @@ export default function Detail() {
     const params = useParams();
     console.log(params.id)
     const [logData, setLogData] = useState([])
+ 
     useEffect(() => {
-       
-          const log =  async () => {await getAdmin(params.id);
-          setLogData(log);
-          console.log(log)
-          console.log(logData)
-        };
+        const fetchData = async () => {
+            const log = await getAdmin(params.id);
+            setLogData(log);
+            console.log(log)
+            console.log(logData)
+          };
+          fetchData()
       
-       
+        
       }, []);
       
      
