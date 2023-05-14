@@ -11,33 +11,16 @@ export default function Sheet({
   totalCount,
   totalPrice,
   orderList,
+  setOrderList,
   setSelectedMenu,
   setRemovedMenu,
 }) {
   const location = useLocation();
-  const [sheetItems, setSheetItems] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
   });
-
-  useEffect(() => {
-    orderList.forEach((item) => {
-      if (item.count !== 0) {
-        setSheetItems((current) => [
-          ...current,
-          <li>
-            <SheetItem
-              menu={item}
-              setSelectedMenu={setSelectedMenu}
-              setRemovedMenu={setRemovedMenu}
-            ></SheetItem>
-          </li>,
-        ]);
-      }
-    });
-  }, []);
 
   const onClickOrder = () => {
     window.location.href = `supertoss://send?bank=신한&accountNo=110188949230&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`;
@@ -56,7 +39,20 @@ export default function Sheet({
           {totalPrice}원
         </div>
       </div>
-      <ul className="w-full pb-24">{sheetItems}</ul>
+      <ul className="w-full pb-24">
+        {orderList
+          .filter((order) => order.count > 0)
+          .map((order) => (
+            <li key={order}>
+              <SheetItem
+                menu={order}
+                setOrderList={setOrderList}
+                setSelectedMenu={setSelectedMenu}
+                setRemovedMenu={setRemovedMenu}
+              />
+            </li>
+          ))}
+      </ul>
       <div className="absolute bottom-0 bg-white w-full h-fit flex justify-center items-center">
         <button
           type="button"
