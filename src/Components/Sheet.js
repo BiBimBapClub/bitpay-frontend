@@ -22,8 +22,21 @@ export default function Sheet({
     ignoreQueryPrefix: true,
   });
 
-  const onClickOrder = () => {
-    window.location.href = `supertoss://send?bank=신한&accountNo=110188949230&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`;
+  const toHexValue = (value) => {
+    return (value * 524288).toString(16);
+  };
+
+  const onClickToss = () => {
+    const bank = "신한";
+    const accountNo = "1101889";
+    window.location.href = `supertoss://send?bank=${bank}&accountNo=${accountNo}&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`;
+  };
+
+  const onClickKakao = () => {
+    const userId = "Ej8Z73HLr";
+    const amount = toHexValue(totalPrice);
+
+    window.location.href = `https://qr.kakaopay.com/${userId}${amount}`;
   };
 
   return (
@@ -77,14 +90,14 @@ export default function Sheet({
             {" "}
             <button
               className="p-3 rounded-lg text-white mb-4"
-              onClick={() => {}}
+              onClick={onClickToss}
               style={{ backgroundColor: "#0064FF" }}
             >
               Toss로 송금하기
             </button>
             <button
               className="p-3 rounded-lg text-black mb-4"
-              onClick={() => {}}
+              onClick={onClickKakao}
               style={{ backgroundColor: "#FFEB04" }}
             >
               카카오페이로 송금하기
