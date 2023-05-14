@@ -1,0 +1,53 @@
+name: FRONT_DEPLOY
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches:
+      - master
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  HEALTH:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check the deployed service URL
+      uses: jtalk/url-health-check-action@v2
+      with:
+        # Check the following URLs one by one sequentially
+        url: https://fest.bibim-bap.com
+        # Follow redirects, or just report success on 3xx status codes
+        follow-redirect: false # Optional, defaults to "false"
+        # Fail this action after this many failed attempts
+        max-attempts: 3 # Optional, defaults to 1
+        # Delay between retries
+        retry-delay: 5s # Optional, only applicable to max-attempts > 1
+        # Retry all errors, including 404. This option might trigger curl upgrade.
+        retry-all: false # Optional, defaults to "false"
+
+  SSH:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: git cloning...
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.FRONT_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            cd SugarFree
+            git reset --hard
+            git fetch
+            git pull
+      - name: Front Rebuilding...
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          host: ${{ secrets.FRONT_HOST }}
+          username: ${{ secrets.USER }}
+          script: |
+            cd bitpay-frontend
+            npm build
