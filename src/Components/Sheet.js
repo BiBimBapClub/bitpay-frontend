@@ -31,7 +31,7 @@ export default function Sheet({
   }, []);
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-mainOrange flex justify-center items-center w-full px-4">
+      <div className="bg-mainOrange flex justify-center items-center w-full px-2">
         <div className="text-white w-1/3 px-4 py-2">총 {totalCount}개</div>
         <div className="text-black text-2xl font-bold w-1/3 flex justify-center">
           <button onClick={onClickBtn} className="text-white">

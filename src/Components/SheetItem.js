@@ -37,20 +37,20 @@ export default function SheetItem({ menu, setSelectedMenu, setRemovedMenu }) {
         </div>
       </div>
 
-      <div className="w-1/4 flex justify-center items-center">
+      <div className="w-1/4 flex justify-start items-center">
         <button
-          className="border bg-mainOrange text-white p-1"
+          className="border bg-mainOrange text-white p-1 w-6"
           onClick={onClickMinusBtn}
         >
           {menus.count > 1 ? (
             <FontAwesomeIcon icon={faMinus} />
           ) : (
-            <FontAwesomeIcon icon={faTrashCan} className="px-[1px]" />
+            <FontAwesomeIcon icon={faTrashCan} />
           )}
         </button>
-        <div className="border px-2 py-1 mx-1">{menus.count}</div>
+        <div className="border w-6 py-1 mx-1 text-center">{menus.count}</div>
         <button
-          className="border bg-mainOrange text-white p-1"
+          className="border w-6 bg-mainOrange text-white p-1"
           onClick={onClickPlusBtn}
         >
           <FontAwesomeIcon icon={faPlus} />
