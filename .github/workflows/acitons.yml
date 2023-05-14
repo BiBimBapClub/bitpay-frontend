@@ -50,4 +50,5 @@ jobs:
           username: ${{ secrets.USER }}
           script: |
             cd bitpay-frontend
+            npm install
             npm run build

@@ -66,7 +66,7 @@ export default function Home() {
         totalCount={totalCount}
         totalPrice={totalPrice}
       ></Footer>
-      <BottomSheet open={open} snapPoints={() => 700}>
+      <BottomSheet open={open} snapPoints={() => 700} blocking={false}>
         <Sheet
           onClickBtn={onClickBottomSheet}
           totalCount={totalCount}
