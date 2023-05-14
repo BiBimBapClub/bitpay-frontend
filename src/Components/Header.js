@@ -18,7 +18,7 @@ export default function Header({ timer }) {
       <div className="text-white text-2xl font-bold">
         테이블 {queryData.tableId}
       </div>
-      <a href="order">
+      <a href={`/order?tableId=${queryData.tableId}`}>
         <div className="bg-white text-sm rounded-3xl px-4 py-2 cursor-pointer">
           주문 내역
         </div>

@@ -28,11 +28,13 @@ export default function Order() {
     <>
       <div className="bg-mainOrange h-fit px-5 py-5 flex justify-between items-center">
         <div className="text-white text-2xl">
-          <a href="/">
+          <a href="javascript:history.back();">
             <FontAwesomeIcon icon={faAngleLeft} />
           </a>
         </div>
-        <div className="text-white text-2xl font-bold">테이블 10</div>
+        <div className="text-white text-2xl font-bold">
+          테이블 {queryData.tableId}
+        </div>
         <div></div>
       </div>
       <ul>
