@@ -3,31 +3,31 @@
     "name": "인싸세트(닭강정2 + 오뎅탕 + 오돌뼈 + 닭발 + 주먹밥2)",
     "price": 48000,
     "type": "set",
-    "image": "/images/chicken.png"
+    "image": "/images/set1.png"
   },
   {
     "name": "너드세트1 (닭발 + 주먹밥)",
     "price": 15000,
     "type": "set",
-    "image": "/"
+    "image": "/images/set2.png"
   },
   {
     "name": "너드세트2 (오돌뼈 + 주먹밥)",
     "price": 13000,
     "type": "set",
-    "image": "/"
+    "image": "/images/set3.png"
   },
   {
     "name": "갱세트1 (닭발 + 오뎅탕 + 주먹밥)",
     "price": 25000,
     "type": "set",
-    "image": "/"
+    "image": "/images/set4.png"
   },
   {
     "name": "갱세트2 (오돌뼈 + 오뎅탕 + 주먹밥)",
     "price": 22000,
     "type": "set",
-    "image": "/"
+    "image": "/images/set5.png"
   },
   {
     "name": "닭강정",
@@ -70,6 +70,12 @@
     "price": 2000,
     "type": "service",
     "image": "/images/cyder.png"
+  },
+  {
+    "name": "생수",
+    "price": 1000,
+    "type": "service",
+    "image": "/images/water.png"
   }
 
 ]
