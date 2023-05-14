@@ -95,6 +95,7 @@ export default function Home() {
           setOrderList={setOrderList}
           setSelectedMenu={setSelectedMenu}
           setRemovedMenu={setRemovedMenu}
+          closeSheet={() => setOpen(false)}
         />
       </BottomSheet>
       <Modal

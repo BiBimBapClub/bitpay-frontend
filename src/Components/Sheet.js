@@ -14,6 +14,7 @@ export default function Sheet({
   setOrderList,
   setSelectedMenu,
   setRemovedMenu,
+  closeSheet,
 }) {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -26,17 +27,42 @@ export default function Sheet({
     return (value * 524288).toString(16);
   };
 
+  const createOrder = () => {
+    // reset orderList's count
+    setOrderList((prev) =>
+      prev.map((value) => {
+        return {
+          ...value,
+          count: 0,
+        };
+      })
+    );
+    closeSheet();
+  };
+
   const onClickToss = () => {
     const bank = "신한";
     const accountNo = "1101889";
-    window.location.href = `supertoss://send?bank=${bank}&accountNo=${accountNo}&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`;
+
+    window.open(
+      `supertoss://send?bank=${bank}&accountNo=${accountNo}&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`,
+      "_blank"
+    );
+
+    createOrder();
   };
 
   const onClickKakao = () => {
     const userId = "Ej8Z73HLr";
     const amount = toHexValue(totalPrice);
 
-    window.location.href = `https://qr.kakaopay.com/${userId}${amount}`;
+    window.open(`https://qr.kakaopay.com/${userId}${amount}`, "_blank");
+
+    createOrder();
+  };
+
+  const onClickSend = () => {
+    createOrder();
   };
 
   return (
@@ -106,7 +132,7 @@ export default function Sheet({
             </button>
             <button
               className="p-3 bg-mainOrange rounded-lg text-white mb-4"
-              onClick={() => setIsOpen(false)}
+              onClick={onClickSend}
             >
               별도로 송금하기
             </button>
