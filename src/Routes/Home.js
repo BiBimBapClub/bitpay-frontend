@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import "react-spring-bottom-sheet/dist/style.css";
 import Header from "../Components/Header";
@@ -7,6 +6,7 @@ import Nav from "../Components/Nav";
 import Footer from "../Components/Footer";
 import Sheet from "../Components/Sheet";
 import Menus from "../Menus.json";
+import getRemainingFoods from "../Shared/apis/getRemainingFoods";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -24,10 +24,15 @@ export default function Home() {
           name: Menu.name,
           price: Menu.price,
           count: 0,
-          src:Menu.image
+          src: Menu.image,
         },
       ]);
     });
+
+    (async function init() {
+      const data = await getRemainingFoods();
+      console.log(data);
+    })();
   }, []);
 
   useEffect(() => {
