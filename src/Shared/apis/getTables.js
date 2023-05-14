@@ -5,7 +5,7 @@ const getTables = async () => {
   return data;
 };
 const getTable = async (tableId) => {
-  const data = await instance.get(`/tables/${tableId}`);
+  const { data } = await instance.get(`/tables/${tableId}`);
   return data;
 };
 const postCleanFinish = async (tableNumber) => {

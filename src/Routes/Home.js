@@ -13,6 +13,7 @@ import { getTable } from "../Shared/apis/getTables";
 
 export default function Home() {
   const location = useLocation();
+  const [table, setTable] = useState();
   const [open, setOpen] = useState(false);
   const [tableIdInput, setTableIdInput] = useState("");
   const [openModal, setOpenModal] = useState(true);
@@ -33,7 +34,7 @@ export default function Home() {
     ignoreQueryPrefix: true,
   });
 
-  const startTime = new Date("Mon May 15 2023 03:02:38 GMT+0900 (한국 표준시)");
+  const startTime = new Date(table?.updatedTime);
   startTime.setHours(startTime.getHours() + 2);
 
   useEffect(() => {
@@ -81,8 +82,8 @@ export default function Home() {
     });
 
     (async function init() {
-      const table = await getTable(queryData.tableId);
-      console.log(table);
+      const tableData = await getTable(queryData.tableId);
+      setTable(tableData);
     })();
   }, []);
 
