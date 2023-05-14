@@ -27,7 +27,6 @@ export default function PaymentRequest() {
       //setServeItems([...serveItems, item]);
       confirmPayment(item.id);
 
-      
     };
     const handleCancel = (item) => {
       cancelPayment(item.id)

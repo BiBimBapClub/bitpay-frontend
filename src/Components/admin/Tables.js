@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate,useLocation } from "react-router-dom";
+import {getTables,postCleanFinish,postOut,postIn} from "../../Shared/apis/getTables";
 
-const Table = ({ data }) => {
+const Table = () => {
   const navigate = useNavigate();
   const navigateToDetail = (index) => {
     navigate("/admin/"+index)
   };
-  const [tableData, setTableData] = useState(data);
+  const [tableData, setTableData] = useState();
+  useEffect(() => {
+    const fetchData = async () => {
+      const tables = await getTables();
+      setTableData(tables.data);
+
+    };
+  
+    const interval = setInterval(fetchData, 5000);
+  
+    return () => clearInterval(interval);
+  }, []);
+  
 
   const handleStatusChange = (index, newStatus) => {
     setTableData((prevData) => {
@@ -17,9 +30,8 @@ const Table = ({ data }) => {
     });
   };
   
-  
 
-  const renderStatusRow = (status, index) => {
+  const renderStatusRow = (status, index, time) => {
     if (status === '퇴장') {
       return (
         <>
@@ -35,7 +47,7 @@ const Table = ({ data }) => {
      
       return (
         <>
-          <td className="border pl-4 py-2">2:00:00</td>
+          <td className="border pl-4 py-2">{time}</td>
           <td className="border pl-4 py-2">
             <button className="bg-slate-200 w-2/3 border-2 border-solid border-black" onClick={() => handleStatusChange(index, '퇴장')}>
               퇴장
@@ -59,14 +71,14 @@ const Table = ({ data }) => {
     }
   };
 
-  const oddRows = tableData.filter((row, index) => index % 2 === 0);
-  const evenRows = tableData.filter((row, index) => index % 2 === 1);
+  const oddRows = tableData?.filter((row, index) => index % 2 === 0);
+  const evenRows = tableData?.filter((row, index) => index % 2 === 1);
 
   return (
     <div className="flex">
       <table className="w-1/2 mr-4">
         <tbody>
-          {oddRows.map((row, index) => (
+          {oddRows?.map((row, index) => (
             <tr key={index} className="bg-gray-100" >
               <td className="border px-4 py-2 cursor-pointer " onClick={() => navigateToDetail(row.number)}>{row.number}</td>
               {renderStatusRow(row.status, index * 2, row.time)}
@@ -74,9 +86,9 @@ const Table = ({ data }) => {
           ))}
         </tbody>
       </table>
-      <table className="w-1/2 ">
+      <table className="w-1/2 mr-4">
         <tbody>
-          {evenRows.map((row, index) => (
+          {evenRows?.map((row, index) => (
             <tr key={index} className="bg-gray-100"  >
               <td className="border px-4 py-2 cursor-pointer" onClick={() => navigateToDetail(row.number)} >{row.number}</td>
               {renderStatusRow(row.status, index * 2 + 1, row.time)}
@@ -87,18 +99,6 @@ const Table = ({ data }) => {
     </div>
   );
 };
-const App = () => {
-  const tableData = [
-    { number: 1, status: '완료'},
-    { number: 2, status: '완료' },
-    { number: 3, status: '완료' },
-    { number: 4, status: '완료'},
-    { number: 5, status: '완료' },
-    { number: 6, status: '완료' },
-    { number: 7, status: '입장'},
-    { number: 8, status: '입장'},
-  ]
-  return <Table data={tableData} />;
-};
 
-export default App;
+
+export default Table;
