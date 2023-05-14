@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import QueryString from "qs";
 import OrderItem from "../Components/OrderItem";
 import { getTableHistory } from "../Shared/apis/getHistory";
+import { getTable } from "../Shared/apis/getTables";
 
 export default function Order() {
   const location = useLocation();
+  const [table, setTable] = useState();
 
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -15,14 +17,14 @@ export default function Order() {
 
   useEffect(() => {
     async function init() {
-      const data = getTableHistory(queryData.tableId);
-      console.log(data);
+      const tableData = await getTable(queryData.tableId);
+      setTable(tableData);
     }
 
     if (queryData.tableId) {
       init();
     }
-  }, [queryData]);
+  }, []);
 
   return (
     <>
@@ -38,6 +40,18 @@ export default function Order() {
         <div></div>
       </div>
       <ul>
+        {table?.orders.map((order) => {
+          return (
+            <li key={order.id}>
+              <OrderItem
+                detailList={order.detailList}
+                status={order.status}
+                totalPrice={order.totalPrice}
+              />
+            </li>
+          );
+        })}
+        {/* 
         <li>
           <OrderItem></OrderItem>
         </li>
@@ -49,10 +63,7 @@ export default function Order() {
         </li>
         <li>
           <OrderItem></OrderItem>
-        </li>
-        <li>
-          <OrderItem></OrderItem>
-        </li>
+        </li> */}
       </ul>
     </>
   );
