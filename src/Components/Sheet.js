@@ -27,7 +27,9 @@ export default function Sheet({
   };
 
   const onClickToss = () => {
-    window.location.href = `supertoss://send?bank=신한&accountNo=110188949230&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`;
+    const bank = "신한";
+    const accountNo = "1101889";
+    window.location.href = `supertoss://send?bank=${bank}&accountNo=${accountNo}&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`;
   };
 
   const onClickKakao = () => {
