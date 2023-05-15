@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,31 +9,33 @@ export default function SheetItem({
   setOrderList,
 }) {
   function onClickMinusBtn() {
-    setRemovedMenu(menu.name);
+    // setRemovedMenu(menu.name);
     setOrderList((prev) =>
       prev.map((order) => {
-        if (order.name === menu.name) {
+        if (order.id === menu.id) {
           return {
             ...menu,
             count: menu.count - 1,
           };
+        } else {
+          return order;
         }
-        return order;
       })
     );
   }
 
   function onClickPlusBtn() {
-    setSelectedMenu(menu.name);
+    // setSelectedMenu(menu.name);
     setOrderList((prev) =>
       prev.map((order) => {
-        if (order.name === menu.name) {
+        if (order.id === menu.id) {
           return {
             ...menu,
-            count: menu.count,
+            count: menu.count + 1,
           };
+        } else {
+          return order;
         }
-        return order;
       })
     );
   }
