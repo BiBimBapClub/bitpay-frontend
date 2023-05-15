@@ -88,13 +88,6 @@ export default function Sheet({
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <ToastContainer
-        position="bottom-center"
-        limit={1}
-        closeButton={false}
-        autoClose={2000}
-        hideProgressBar
-      />
       <div className="bg-mainOrange flex justify-center items-center w-full px-2">
         <div className="text-white w-1/3 px-4 py-2">총 {totalCount}개</div>
         <div className="text-black text-2xl font-bold w-1/3 flex justify-center">
@@ -152,6 +145,7 @@ export default function Sheet({
               </span>
             </CopyToClipboard>
             으로 {totalPrice.toLocaleString()}원을 송금해주세요!
+            <ToastContainer className="font-semibold" />
           </span>
         )}
         button={() => (
