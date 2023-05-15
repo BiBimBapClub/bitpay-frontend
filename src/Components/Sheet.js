@@ -65,8 +65,8 @@ export default function Sheet({
   };
 
   const onClickToss = () => {
-    const bank = "신한";
-    const accountNo = "1101889";
+    const bank = "우리은행";
+    const accountNo = "1002037127421";
 
     window.open(
       `supertoss://send?bank=${bank}&accountNo=${accountNo}&origin=linkgen&amount=${totalPrice}&msg=${queryData.tableId}테이블`,
