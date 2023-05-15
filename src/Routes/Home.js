@@ -13,7 +13,10 @@ import { getTable } from "../Shared/apis/getTables";
 import { getMenus } from "../Shared/apis/getMenus";
 
 export default function Home() {
+  const [menulist,setMenuList] = useState([])
+
   const location = useLocation();
+  
   const [table, setTable] = useState();
   const [open, setOpen] = useState(false);
   const [tableIdInput, setTableIdInput] = useState("");
@@ -82,10 +85,13 @@ export default function Home() {
         },
       ]);
     });
-
+    
+      
+    
     (async function init() {
       const tableData = await getTable(queryData.tableId);
       setTable(tableData);
+
     })();
 
     const refetchTable = setInterval(async () => {
@@ -121,7 +127,7 @@ export default function Home() {
   return (
     <>
       <Header timer={timer}></Header>
-      <Nav setSelectedMenu={setSelectedMenu}></Nav>
+      <Nav setSelectedMenu={setSelectedMenu} ></Nav>
 
       <Footer
         onClickBtn={onClickBottomSheet}

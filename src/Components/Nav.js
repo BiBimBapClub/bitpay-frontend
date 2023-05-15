@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Menus from "../Menus.json";
 
 import Menu from "./Menu";
+import { getMenus } from "../Shared/apis/getMenus";
 
-export default function Nav({ setSelectedMenu }) {
+export default function Nav({ setSelectedMenu}) {
+  const [menulist,setMenuList] = useState([])
   const [tabsData, setTabsData] = useState([
     {
       label: "세트메뉴",
@@ -28,14 +30,28 @@ export default function Nav({ setSelectedMenu }) {
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
 
   const tabsRef = useRef([]);
+  const fetchData = async () => {
+    const menus = await getMenus();
+    setMenuList(menus);
+    console.log(menulist)
+  };
 
   useEffect(() => {
+    fetchData();
+    
+   
+  }, []);
+  useEffect(() => {
+    
+    
     const setMenu = [];
     const singleMenu = [];
     const service = [];
     const sideMenu =[];
+    
 
     Menus.forEach((menu) => {
+      
       if (menu.type === "set") {
         setMenu.push(
           <Menu
@@ -43,7 +59,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
-            
+            count={menulist[menu.id - 1]?.remain}
           ></Menu>
         );
       } else if (menu.type === "single") {
@@ -53,6 +69,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
+            count={menulist[menu.id - 1]?.remain}
           ></Menu>
         );
       } else if (menu.type === "side") {
@@ -62,6 +79,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
+            count={menulist[menu.id - 1]?.remain}
           ></Menu>
         );
       } else if (menu.type === "service") {
@@ -71,10 +89,12 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
+            count={menulist[menu.id - 1]?.remain}
           ></Menu>
         );
       }
     });
+ 
     setTabsData([
       {
         label: "세트메뉴",
