@@ -140,7 +140,9 @@ export default function Sheet({
               text="우리은행 1002-037-127421"
               onCopy={() => alert("클립보드에 복사되었습니다.")}
             >
-              <text>우리은행 1002-037-127421</text>
+              <text className="font-bold underline-offset-2">
+                우리은행 1002-037-127421
+              </text>
             </CopyToClipboard>
             으로 {totalPrice.toLocaleString()}원을 송금해주세요!
           </span>
