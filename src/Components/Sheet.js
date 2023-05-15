@@ -33,32 +33,33 @@ export default function Sheet({
 
   const createOrder = async () => {
     // send order to server
-    const res = await postOrder(
-      queryData.tableId,
-      orderList
-        .filter((order) => order.count > 0)
-        .map((order) => {
+    try {
+      const res = await postOrder(
+        queryData.tableId,
+        orderList
+          .filter((order) => order.count > 0)
+          .map((order) => {
+            return {
+              menu_id: order.id,
+              count: order.count,
+            };
+          })
+      );
+      console.log(res);
+    } catch (err) {
+      if (err.response && err.response.status === 400) alert(err.response.data);
+    } finally {
+      setOrderList((prev) =>
+        prev.map((value) => {
           return {
-            menu_id: order.id,
-            count: order.count,
+            ...value,
+            count: 0,
           };
         })
-    );
-    console.log(res);
-
-    // reset orderList's count
-    setOrderList((prev) =>
-      prev.map((value) => {
-        return {
-          ...value,
-          count: 0,
-        };
-      })
-    );
-
-    closeSheet();
-
-    setIsOpen(false);
+      );
+      closeSheet();
+      setIsOpen(false);
+    }
   };
 
   const onClickToss = () => {
