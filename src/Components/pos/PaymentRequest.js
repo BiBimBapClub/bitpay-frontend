@@ -9,14 +9,14 @@ import {
   cancelPayment,
 } from "../../Shared/apis/getOrders";
 import { getAdmin } from "../../Shared/apis/getAdmin";
-import Menus from '../../Menus.json'
+import Menus from "../../Menus.json";
 
 export default function PaymentRequest() {
   const [orderItems, setOrderItems] = useState([]);
   const [serveItems, setServeItems] = useState([]);
 
   // const orderedMenus = Menus.filter((menu) => menu.id === detailList[0].menuId);
-  console.log(orderItems)
+  console.log(orderItems);
 
   const fetchData = async () => {
     const payment = await getPaymentRequest();
@@ -34,16 +34,15 @@ export default function PaymentRequest() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleConfirm = (item) => {
-    //setOrderItems(orderItems.filter((order) => order !== item));
-    //setServeItems([...serveItems, item]);
-    confirmPayment(item.id);
+  const handleConfirm = async (item) => {
+    await confirmPayment(item.id);
+    await fetchData();
   };
-  const handleCancel = (item) => {
-    cancelPayment(item.id);
+  const handleCancel = async (item) => {
+    await cancelPayment(item.id);
+    await fetchData();
   };
-  const handleServeComplete = (item) => {
-    //setServeItems(serveItems.filter((serve) => serve !== item));
+  const handleServeComplete = async (item) => {
     confirmServe(item.id);
     console.log(serveItems);
   };
@@ -58,7 +57,15 @@ export default function PaymentRequest() {
           >
             <div className="w-1/5 float-left">{item.id}</div>
             <div className="w-1/5 float-left">{item.tableNumber}</div>
-             <div className="w-1/5 float-left">{item.detailList.map(menu => <span>{Menus.find(m => m.id === menu.menuId).name} * {menu.quantity}개 <br/><br/></span>)}</div>
+            <div className="w-1/5 float-left">
+              {item.detailList.map((menu) => (
+                <span>
+                  {Menus.find((m) => m.id === menu.menuId).name} *{" "}
+                  {menu.quantity}개 <br />
+                  <br />
+                </span>
+              ))}
+            </div>
             <div className="w-1/5 float-left">{item.totalPrice}</div>
             <div className="w-1/5 float-left">
               {!item.paymentConfirmed && (
@@ -88,7 +95,15 @@ export default function PaymentRequest() {
           >
             <div className="w-1/5 float-left">{item.id}</div>
             <div className="w-1/5 float-left">{item.tableNumber}</div>
-            <div className="w-1/5 float-left">{item.detailList.map(menu => <span>{Menus.find(m => m.id === menu.menuId).name} * {menu.quantity}개 <br/><br/></span>)}</div>
+            <div className="w-1/5 float-left">
+              {item.detailList.map((menu) => (
+                <span>
+                  {Menus.find((m) => m.id === menu.menuId).name} *{" "}
+                  {menu.quantity}개 <br />
+                  <br />
+                </span>
+              ))}
+            </div>
             <div className="w-1/5 float-left">{item.totalPrice}</div>
             <div className="w-1/5 float-left">
               {!item.paymentConfirmed && (
