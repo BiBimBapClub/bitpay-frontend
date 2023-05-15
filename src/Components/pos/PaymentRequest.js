@@ -22,8 +22,8 @@ export default function PaymentRequest() {
     const payment = await getPaymentRequest();
     const serve = await getServeRequest();
 
-    setOrderItems(payment.data.reverse());
-    setServeItems(serve.data.reverse());
+    setOrderItems(payment.data);
+    setServeItems(serve.data);
   };
 
   useEffect(() => {
