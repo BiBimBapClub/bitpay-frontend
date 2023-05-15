@@ -39,17 +39,23 @@ export default function Order() {
         <div></div>
       </div>
       <ul>
-        {table?.orders.map((order) => {
-          return (
-            <li key={order.id}>
-              <OrderItem
-                detailList={order.detailList}
-                status={order.status}
-                totalPrice={order.totalPrice}
-              />
-            </li>
-          );
-        })}
+        {table?.orders.length > 0 ? (
+          table?.orders.map((order) => {
+            return (
+              <li key={order.id}>
+                <OrderItem
+                  detailList={order.detailList}
+                  status={order.status}
+                  totalPrice={order.totalPrice}
+                />
+              </li>
+            );
+          })
+        ) : (
+          <div className="w-full flex justify-center items-center text-center pt-16">
+            주문 내역이 없습니다.
+          </div>
+        )}
       </ul>
     </>
   );
