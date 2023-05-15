@@ -14,14 +14,24 @@ export default function Order() {
     ignoreQueryPrefix: true,
   });
 
+  const fetchGetTable = async () => {
+    const tableData = await getTable(queryData.tableId);
+    setTable(tableData);
+  };
+
   useEffect(() => {
-    async function init() {
-      const tableData = await getTable(queryData.tableId);
-      setTable(tableData);
-    }
+    let refetchTable;
+    fetchGetTable();
 
     if (queryData.tableId) {
-      init();
+      fetchGetTable();
+
+      refetchTable = setInterval(async () => {
+        const tableData = await getTable(queryData.tableId);
+        setTable(tableData);
+      }, 1000 * 5);
+
+      return () => clearInterval(refetchTable);
     }
   }, []);
 
