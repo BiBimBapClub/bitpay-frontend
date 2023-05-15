@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 import QueryString from "qs";
 import OrderItem from "../Components/OrderItem";
-import { getTableHistory } from "../Shared/apis/getHistory";
 import { getTable } from "../Shared/apis/getTables";
 
 export default function Order() {
@@ -51,19 +50,6 @@ export default function Order() {
             </li>
           );
         })}
-        {/* 
-        <li>
-          <OrderItem></OrderItem>
-        </li>
-        <li>
-          <OrderItem></OrderItem>
-        </li>
-        <li>
-          <OrderItem></OrderItem>
-        </li>
-        <li>
-          <OrderItem></OrderItem>
-        </li> */}
       </ul>
     </>
   );
