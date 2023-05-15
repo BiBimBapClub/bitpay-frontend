@@ -32,6 +32,7 @@ export default function Nav({ setSelectedMenu }) {
   const tabsRef = useRef([]);
   const fetchData = async () => {
     const menus = await getMenus();
+    console.log(menus);
     setMenuList(menus);
     console.log(menulist);
   };
