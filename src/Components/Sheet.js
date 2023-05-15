@@ -162,12 +162,19 @@ export default function Sheet({
             >
               카카오페이로 송금하기
             </button>
+
             <button
               className="p-3 bg-mainOrange rounded-lg text-white mb-4"
               onClick={onClickSend}
             >
-              별도로 송금하기
+              <CopyToClipboard
+                text="우리은행 1002-037-127421"
+                onCopy={() => alert("클립보드에 복사되었습니다.")}
+              >
+                <span>별도로 송금하기</span>
+              </CopyToClipboard>
             </button>
+
             <button
               className="p-3 bg-black rounded-lg text-white "
               onClick={() => setIsOpen(false)}
