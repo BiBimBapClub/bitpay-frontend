@@ -7,6 +7,7 @@ import QueryString from "qs";
 import Modal from "./Modal";
 import postOrder from "../Shared/apis/postOrder";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function Sheet({
   timer,
@@ -137,13 +138,14 @@ export default function Sheet({
             <br />- 별도로 송금하는 경우{" "}
             <CopyToClipboard
               text="우리은행 1002-037-127421"
-              onCopy={() => alert("클립보드에 복사되었습니다.")}
+              onCopy={() => toast("계좌번호가 복사되었습니다.")}
             >
               <span className="font-bold underline underline-offset-2">
                 우리은행 1002-037-127421
               </span>
             </CopyToClipboard>
             으로 {totalPrice.toLocaleString()}원을 송금해주세요!
+            <ToastContainer />
           </span>
         )}
         button={() => (
@@ -169,7 +171,7 @@ export default function Sheet({
             >
               <CopyToClipboard
                 text="우리은행 1002-037-127421"
-                onCopy={() => alert("클립보드에 복사되었습니다.")}
+                onCopy={() => alert("우리은행 1002-037-127421 복사되었습니다.")}
               >
                 <span>별도로 송금하기</span>
               </CopyToClipboard>
