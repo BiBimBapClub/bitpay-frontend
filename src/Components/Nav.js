@@ -49,7 +49,6 @@ export default function Nav({ setSelectedMenu }) {
           ...menu,
           ...Menus.find((value) => value.id === menu.number),
         };
-        console.log(data, MenuLabel[data.type]);
         setTabsData((prev) =>
           prev.map((tab) => {
             if (tab.label === MenuLabel[data.type]) {
