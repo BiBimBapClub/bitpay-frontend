@@ -145,7 +145,13 @@ export default function Sheet({
               </span>
             </CopyToClipboard>
             으로 {totalPrice.toLocaleString()}원을 송금해주세요!
-            <ToastContainer />
+            <ToastContainer
+              position="bottom-center"
+              limit={1}
+              closeButton={false}
+              autoClose={2000}
+              hideProgressBar
+            />
           </span>
         )}
         button={() => (
