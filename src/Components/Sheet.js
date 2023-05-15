@@ -74,7 +74,7 @@ export default function Sheet({
   };
 
   const onClickKakao = () => {
-    const userId = "Ej8Z73HLr";
+    const userId = "Ej8zkz2IC";
     const amount = toHexValue(totalPrice);
 
     window.open(`https://qr.kakaopay.com/${userId}${amount}`, "_blank");
