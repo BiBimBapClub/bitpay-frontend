@@ -14,7 +14,13 @@ export default function Menu({ src, name, price, setSelectedMenu, count }) {
       />
       <div className="text-base font-medium mb-1 leading-6">{name}</div>
       <div className="text-sm text-gray-500">
-        {price.toLocaleString()}원 {count !== 9999 && ` · 남은수량 ${count}개`}
+        {price.toLocaleString()}원{" "}
+        {count < 10 && (
+          <div className="text-sm text-red-500 font-bold">
+            {" "}
+            · 남은수량 {count}개
+          </div>
+        )}
       </div>
     </div>
   );
