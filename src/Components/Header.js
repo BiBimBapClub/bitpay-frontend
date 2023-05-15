@@ -1,9 +1,11 @@
 import QueryString from "qs";
 import React from "react";
 import { useLocation } from "react-router-dom";
+import useTimer from "./Timer";
 
-export default function Header({ timer }) {
+export default function Header({ updatedTime }) {
   const location = useLocation();
+  const timer = useTimer({ updatedTime });
 
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,

@@ -8,9 +8,10 @@ import Modal from "./Modal";
 import postOrder from "../Shared/apis/postOrder";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { ToastContainer, toast } from "react-toastify";
+import useTimer from "./Timer";
 
 export default function Sheet({
-  timer,
+  updatedTime,
   onClickBtn,
   totalCount,
   totalPrice,
@@ -22,6 +23,7 @@ export default function Sheet({
 }) {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
+  const timer = useTimer({ updatedTime });
 
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
