@@ -106,7 +106,7 @@ export default function Nav({ setSelectedMenu }) {
           {tabsData[activeTabIndex].content.map((menu) => {
             return (
               <Menu
-                id={menu.id}
+                key={menu.id}
                 name={menu.name}
                 price={menu.price}
                 setSelectedMenu={setSelectedMenu}

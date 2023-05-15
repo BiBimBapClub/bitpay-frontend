@@ -30,6 +30,7 @@ const Modal = ({
       onRequestClose={closeModal}
       style={customStyles}
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
+      ariaHideApp={false}
     >
       <div className="flex flex-col p-10 rounded-lg">
         <span className="font-bold text-xl pb-2">{message}</span>
