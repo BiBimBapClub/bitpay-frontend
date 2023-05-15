@@ -21,7 +21,7 @@ export default function OrderItem({ detailList, status, totalPrice }) {
   }
 
   return (
-    <div className="flex justify-between items-center my-3 px-5 pt-3">
+    <div className="flex justify-between items-center my-2 px-2 pt-2">
       <div className="flex justify-center items-center w-fit">
         <img
           src={`${process.env.PUBLIC_URL + menu.image}`}
