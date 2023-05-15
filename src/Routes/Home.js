@@ -59,7 +59,7 @@ export default function Home() {
     const refetchTable = setInterval(async () => {
       const tableData = await getTable(queryData.tableId);
       setTable(tableData);
-    }, 1000 * 60);
+    }, 1000 * 10);
 
     return () => clearInterval(refetchTable);
   }, []);
