@@ -5,7 +5,7 @@ import Menu from "./Menu";
 import { getMenus } from "../Shared/apis/getMenus";
 
 export default function Nav({ setSelectedMenu }) {
-  const [menulist, setMenuList] = useState([]);
+  const menulist = [];
   const [tabsData, setTabsData] = useState([
     {
       label: "세트메뉴",
@@ -32,9 +32,7 @@ export default function Nav({ setSelectedMenu }) {
   const tabsRef = useRef([]);
   const fetchData = async () => {
     const menus = await getMenus();
-    console.log(menus);
-    setMenuList(menus);
-    console.log(menulist);
+    menulist = menus;
   };
 
   useEffect(() => {
