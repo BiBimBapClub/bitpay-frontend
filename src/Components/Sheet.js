@@ -136,13 +136,12 @@ export default function Sheet({
             <strong>{queryData.tableId}테이블</strong>로 변경해주세요!
             <br />- 별도로 송금하는 경우{" "}
             <CopyToClipboard
-              className="text-bold"
               text="우리은행 1002-037-127421"
               onCopy={() => alert("클립보드에 복사되었습니다.")}
             >
-              <text className="font-bold underline-offset-2">
+              <span className="font-bold underline-offset-2">
                 우리은행 1002-037-127421
-              </text>
+              </span>
             </CopyToClipboard>
             으로 {totalPrice.toLocaleString()}원을 송금해주세요!
           </span>
