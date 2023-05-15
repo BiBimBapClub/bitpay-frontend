@@ -5,7 +5,13 @@ import Menu from "./Menu";
 import { getMenus } from "../Shared/apis/getMenus";
 
 export default function Nav({ setSelectedMenu }) {
-  let menulist = [];
+  const MenuLabel = {
+    set: "세트메뉴",
+    single: "단품메뉴",
+    side: "사이드",
+    service: "음료수",
+  };
+
   const [tabsData, setTabsData] = useState([
     {
       label: "세트메뉴",
@@ -24,98 +30,46 @@ export default function Nav({ setSelectedMenu }) {
       content: [],
     },
   ]);
-
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const [tabUnderlineWidth, setTabUnderlineWidth] = useState(0);
   const [tabUnderlineLeft, setTabUnderlineLeft] = useState(0);
+  const [menus, setMenus] = useState([]);
 
   const tabsRef = useRef([]);
+
   const fetchData = async () => {
     const menus = await getMenus();
-    console.log("menu", menus);
-    menulist = menus;
-    console.log("menulist", menulist);
-    menulist.forEach((menu) => {
-      console.log(menu.remain);
-    });
+    setMenus(menus);
   };
 
   useEffect(() => {
+    if (menus.length > 0) {
+      menus.map((menu) => {
+        const data = {
+          ...menu,
+          ...Menus.find((value) => value.id === menu.number),
+        };
+        console.log(data, MenuLabel[data.type]);
+        setTabsData((prev) =>
+          prev.map((tab) => {
+            if (tab.label === MenuLabel[data.type]) {
+              return { ...tab, content: [...tab.content, data] };
+            } else {
+              return tab;
+            }
+          })
+        );
+      });
+    }
+  }, [menus]);
+
+  useEffect(() => {
     fetchData();
-
-    const setMenu = [];
-    const singleMenu = [];
-    const service = [];
-    const sideMenu = [];
-
-    Menus.forEach((menu) => {
-      if (menu.type === "set") {
-        setMenu.push(
-          <Menu
-            name={menu.name}
-            price={menu.price}
-            setSelectedMenu={setSelectedMenu}
-            src={menu.image}
-            count={menulist[menu.id - 1].remain}
-          ></Menu>
-        );
-      } else if (menu.type === "single") {
-        singleMenu.push(
-          <Menu
-            name={menu.name}
-            price={menu.price}
-            setSelectedMenu={setSelectedMenu}
-            src={menu.image}
-            count={menulist[menu.id - 1].remain}
-          ></Menu>
-        );
-      } else if (menu.type === "side") {
-        sideMenu.push(
-          <Menu
-            name={menu.name}
-            price={menu.price}
-            setSelectedMenu={setSelectedMenu}
-            src={menu.image}
-            count={menulist[menu.id - 1].remain}
-          ></Menu>
-        );
-      } else if (menu.type === "service") {
-        service.push(
-          <Menu
-            name={menu.name}
-            price={menu.price}
-            setSelectedMenu={setSelectedMenu}
-            src={menu.image}
-            count={menulist[menu.id - 1].remain}
-          ></Menu>
-        );
-      }
-    });
-
-    setTabsData([
-      {
-        label: "세트메뉴",
-        content: setMenu,
-      },
-      {
-        label: "단품메뉴",
-        content: singleMenu,
-      },
-      {
-        label: "사이드",
-        content: sideMenu,
-      },
-      {
-        label: "음료수",
-        content: service,
-      },
-    ]);
   }, []);
 
   useEffect(() => {
     function setTabPosition() {
       const currentTab = tabsRef.current[activeTabIndex];
-      console.log(currentTab?.offsetLeft, currentTab?.clientWidth);
       setTabUnderlineLeft(currentTab?.offsetLeft ?? 0);
       setTabUnderlineWidth(currentTab?.clientWidth ?? 0);
     }
@@ -125,6 +79,7 @@ export default function Nav({ setSelectedMenu }) {
 
     return () => window.removeEventListener("resize", setTabPosition);
   }, [activeTabIndex]);
+
   return (
     <div>
       <div className="relative bg-white">
@@ -149,7 +104,18 @@ export default function Nav({ setSelectedMenu }) {
       </div>
       <div className="pb-16">
         <div className="grid grid-cols-2 w-full">
-          {tabsData[activeTabIndex].content}
+          {tabsData[activeTabIndex].content.map((menu) => {
+            return (
+              <Menu
+                id={menu.id}
+                name={menu.name}
+                price={menu.price}
+                setSelectedMenu={setSelectedMenu}
+                src={menu.image}
+                count={menu.remain}
+              ></Menu>
+            );
+          })}
         </div>
       </div>
     </div>
