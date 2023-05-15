@@ -82,7 +82,7 @@ export default function Nav({ setSelectedMenu }) {
   return (
     <div>
       <div className="relative bg-white">
-        <div className="flex space-x-3 border-b pl-5">
+        <div className="flex space-x-3 border-b pl-2">
           {tabsData.map((tab, idx) => {
             return (
               <button
