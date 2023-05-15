@@ -88,7 +88,7 @@ export default function Home() {
 
   return (
     <>
-      <Header updatedTime={table?.updatedTime}></Header>
+      <Header table={table}></Header>
       <Nav setSelectedMenu={setSelectedMenu}></Nav>
 
       <Footer
