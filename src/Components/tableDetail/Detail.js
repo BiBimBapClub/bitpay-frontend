@@ -36,8 +36,12 @@ export default function Detail() {
             <div className="w-1/6 float-left">{index.tableNumber}</div>
             <div className="w-1/6 float-left">주문자</div>
             <div className="w-1/6 float-left">{index.type}</div>
-            <div className="w-1/6 float-left">{index.description}</div>
-            <div className="w-1/6 float-left">{index.timestamp}</div>
+            <div className="w-1/6 float-left">{index.description.includes('주문으로 인한 시간 증가') ? (
+              index.description.replace(/(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})\.\d+/, '$1')
+            ) : (
+              index.description
+            )}</div>
+            <div className="w-1/6 float-left">{index.timestamp.replace(/\.\d+$/, "")}</div>
             </div>
           ))}
       </div>
