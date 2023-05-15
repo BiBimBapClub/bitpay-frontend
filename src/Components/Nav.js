@@ -5,7 +5,7 @@ import Menu from "./Menu";
 import { getMenus } from "../Shared/apis/getMenus";
 
 export default function Nav({ setSelectedMenu }) {
-  const menulist = [];
+  let menulist = [];
   const [tabsData, setTabsData] = useState([
     {
       label: "세트메뉴",
