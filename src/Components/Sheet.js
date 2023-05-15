@@ -139,7 +139,7 @@ export default function Sheet({
               text="우리은행 1002-037-127421"
               onCopy={() => alert("클립보드에 복사되었습니다.")}
             >
-              <span className="font-bold underline-offset-2">
+              <span className="font-bold underline underline-offset-2">
                 우리은행 1002-037-127421
               </span>
             </CopyToClipboard>
