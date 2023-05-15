@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SheetItem from "./SheetItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "./Modal";
@@ -141,6 +141,7 @@ export default function Sheet({
               onCopy={() => toast("계좌번호가 복사되었습니다.")}
             >
               <span className="font-bold underline underline-offset-2">
+                <FontAwesomeIcon icon={faClipboard} />
                 우리은행 1002-037-127421
               </span>
             </CopyToClipboard>
@@ -176,12 +177,7 @@ export default function Sheet({
               className="p-3 bg-mainOrange rounded-lg text-white mb-4"
               onClick={onClickSend}
             >
-              <CopyToClipboard
-                text="우리은행 1002-037-127421"
-                onCopy={() => alert("우리은행 1002-037-127421 복사되었습니다.")}
-              >
-                <span>별도로 송금하기</span>
-              </CopyToClipboard>
+              <span>별도로 송금하기</span>
             </button>
 
             <button
