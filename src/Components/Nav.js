@@ -4,8 +4,8 @@ import Menus from "../Menus.json";
 import Menu from "./Menu";
 import { getMenus } from "../Shared/apis/getMenus";
 
-export default function Nav({ setSelectedMenu}) {
-  const [menulist,setMenuList] = useState([])
+export default function Nav({ setSelectedMenu }) {
+  const [menulist, setMenuList] = useState([]);
   const [tabsData, setTabsData] = useState([
     {
       label: "세트메뉴",
@@ -33,25 +33,20 @@ export default function Nav({ setSelectedMenu}) {
   const fetchData = async () => {
     const menus = await getMenus();
     setMenuList(menus);
-    console.log(menulist)
+    console.log(menulist);
   };
 
   useEffect(() => {
     fetchData();
-    
-   
   }, []);
+
   useEffect(() => {
-    
-    
     const setMenu = [];
     const singleMenu = [];
     const service = [];
-    const sideMenu =[];
-    
+    const sideMenu = [];
 
     Menus.forEach((menu) => {
-      
       if (menu.type === "set") {
         setMenu.push(
           <Menu
@@ -94,7 +89,7 @@ export default function Nav({ setSelectedMenu}) {
         );
       }
     });
- 
+
     setTabsData([
       {
         label: "세트메뉴",
