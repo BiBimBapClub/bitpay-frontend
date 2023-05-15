@@ -56,7 +56,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
-            count={menulist[menu.id - 1]?.remain}
+            count={menulist[menu.id - 1].remain}
           ></Menu>
         );
       } else if (menu.type === "single") {
@@ -66,7 +66,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
-            count={menulist[menu.id - 1]?.remain}
+            count={menulist[menu.id - 1].remain}
           ></Menu>
         );
       } else if (menu.type === "side") {
@@ -76,7 +76,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
-            count={menulist[menu.id - 1]?.remain}
+            count={menulist[menu.id - 1].remain}
           ></Menu>
         );
       } else if (menu.type === "service") {
@@ -86,7 +86,7 @@ export default function Nav({ setSelectedMenu }) {
             price={menu.price}
             setSelectedMenu={setSelectedMenu}
             src={menu.image}
-            count={menulist[menu.id - 1]?.remain}
+            count={menulist[menu.id - 1].remain}
           ></Menu>
         );
       }
