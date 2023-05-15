@@ -15,9 +15,9 @@ export default function Menu({ src, name, price, setSelectedMenu, count }) {
       />
       <div className="text-lg text-center">{name}</div>
       <div className="text-sm text-center">{price.toLocaleString()}원</div>
-      {/* {count != 9999 ? (
+      {count != 9999 ? (
         <div className="text-xs text-center pt-1">남은수량 : {count}개</div>
-      ) : null} */}
+      ) : null}
     </div>
   );
 }

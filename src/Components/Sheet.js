@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import QueryString from "qs";
 import Modal from "./Modal";
 import postOrder from "../Shared/apis/postOrder";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function Sheet({
   timer,
@@ -133,7 +134,14 @@ export default function Sheet({
             - 카카오페이의 경우{" "}
             <span className="text-red-500 font-bold">입금자 명</span>을{" "}
             <strong>{queryData.tableId}테이블</strong>로 변경해주세요!
-            <br />- 별도로 송금하는 경우 <strong>124-123242123-12 신한</strong>
+            <br />- 별도로 송금하는 경우{" "}
+            <CopyToClipboard
+              className="text-bold"
+              text="우리은행 1002-037-127421"
+              onCopy={() => alert("클립보드에 복사되었습니다.")}
+            >
+              <text>우리은행 1002-037-127421</text>
+            </CopyToClipboard>
             으로 {totalPrice.toLocaleString()}원을 송금해주세요!
           </span>
         )}
