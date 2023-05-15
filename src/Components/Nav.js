@@ -33,6 +33,9 @@ export default function Nav({ setSelectedMenu }) {
   const fetchData = async () => {
     const menus = await getMenus();
     menulist = menus;
+    menulist.forEach((menu) => {
+      console.log(menu.remain);
+    });
   };
 
   useEffect(() => {
