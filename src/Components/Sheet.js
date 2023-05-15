@@ -83,6 +83,9 @@ export default function Sheet({
   };
 
   const onClickSend = () => {
+    alert(
+      "입금내역을 확인중입니다.\n주문내역 페이지에서 결제상태를 확인해주세요."
+    );
     createOrder();
   };
 
@@ -141,7 +144,7 @@ export default function Sheet({
               onCopy={() => toast("계좌번호가 복사되었습니다.")}
             >
               <span className="font-bold underline underline-offset-2">
-                <FontAwesomeIcon icon={faClipboard} />
+                <FontAwesomeIcon icon={faClipboard} className="mr-1" />
                 우리은행 1002-037-127421
               </span>
             </CopyToClipboard>
