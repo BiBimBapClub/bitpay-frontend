@@ -42,9 +42,7 @@ export default function Nav({ setSelectedMenu }) {
 
   useEffect(() => {
     fetchData();
-  }, []);
 
-  useEffect(() => {
     const setMenu = [];
     const singleMenu = [];
     const service = [];
