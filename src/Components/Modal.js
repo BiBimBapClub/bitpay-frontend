@@ -20,8 +20,8 @@ const Modal = ({
       border: "none",
       boderRadius: 20,
       padding: 0,
-      boxShadow: "rgba(17, 12, 46, 0.15) 0px 48px 100px 0px",
-      width: "80%",
+      boxShadow: "rgba(17, 12, 46, 0.2) 0px 48px 100px 0px",
+      width: "90%",
     },
   };
   return (
@@ -32,7 +32,7 @@ const Modal = ({
       shouldCloseOnOverlayClick={shouldCloseOnOverlayClick}
       ariaHideApp={false}
     >
-      <div className="flex flex-col p-10 rounded-lg">
+      <div className="flex flex-col py-6 px-4 rounded-lg">
         <span className="font-bold text-xl pb-2">{message}</span>
         {description()}
         {button()}
