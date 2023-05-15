@@ -53,7 +53,7 @@ export default function PaymentRequest() {
         {orderItems?.map((item) => (
           <div
             key={item.id}
-            className="overflow-auto w-full h-fit text-black text-xl font-bold text-center mb-3 "
+            className="overflow-auto w-full h-fit text-black text-xl font-bold text-center mb-3 border-b-2 border-black"
           >
             <div className="w-1/5 float-left">{item.id}</div>
             <div className="w-1/5 float-left">{item.tableNumber}</div>
@@ -87,11 +87,11 @@ export default function PaymentRequest() {
         ))}
       </div>
 
-      <div className="w-1/2 mt-3">
+      <div className="w-1/2 mt-3 ">
         {serveItems?.map((item) => (
           <div
             key={item.id}
-            className="overflow-auto w-full text-black text-xl font-bold text-center mb-3"
+            className="overflow-auto w-full text-black text-xl font-bold text-center mb-3 border-b-2 border-black"
           >
             <div className="w-1/5 float-left">{item.id}</div>
             <div className="w-1/5 float-left">{item.tableNumber}</div>

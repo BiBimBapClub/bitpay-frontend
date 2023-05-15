@@ -9,6 +9,7 @@ import postOrder from "../Shared/apis/postOrder";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { ToastContainer, toast } from "react-toastify";
 import useTimer from "./Timer";
+import { getTable } from "../Shared/apis/getTables";
 
 export default function Sheet({
   updatedTime,
@@ -24,6 +25,22 @@ export default function Sheet({
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const timer = useTimer({ updatedTime });
+  const [isFirstOrder, setIsFirstOrder] = useState(true);
+
+  const fetchGetTable = async () => {
+    const tableData = await getTable(queryData.tableId);
+
+    tableData.orders.forEach((order) => {
+      console.log(order.status);
+      if (order.status === "ORDER_STATUS_COMPLETE") {
+        setIsFirstOrder(false);
+      }
+    });
+  };
+
+  useEffect(() => {
+    fetchGetTable();
+  }, []);
 
   const queryData = QueryString.parse(location.search, {
     ignoreQueryPrefix: true,
@@ -105,6 +122,10 @@ export default function Sheet({
           {totalPrice.toLocaleString()}원
         </div>
       </div>
+      {isFirstOrder ? (
+        <p className="pt-4">최초 주문금액은 14,000원 이상이어야합니다.</p>
+      ) : null}
+
       <ul className="w-full pb-24">
         {orderList
           .filter((order) => order.count > 0)
