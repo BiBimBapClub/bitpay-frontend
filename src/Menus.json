@@ -11,7 +11,7 @@
     "id": 2,
     "name": "너드세트1 (닭발 + 주먹밥)",
     "price": 15000,
-    "type": "set",
+    "type": "none",
     "image": "/images/set2.png"
   },
   {
@@ -25,14 +25,14 @@
     "id": 4,
     "name": "갱세트1 (닭발 + 오뎅탕 + 주먹밥)",
     "price": 25000,
-    "type": "set",
+    "type": "none",
     "image": "/images/set4.png"
   },
   {
     "id": 5,
     "name": "갱세트2 (오돌뼈 + 오뎅탕 + 주먹밥)",
     "price": 22000,
-    "type": "set",
+    "type": "",
     "image": "/images/set5.png"
   },
   {
@@ -60,14 +60,14 @@
     "id": 9,
     "name": "닭발",
     "price": 12000,
-    "type": "single",
+    "type": "none",
     "image": "/images/chickenfeet.png"
   },
   {
     "id": 10,
     "name": "주먹밥",
     "price": 4000,
-    "type": "side",
+    "type": "none",
     "image": "/images/rice.png"
   },
   {
