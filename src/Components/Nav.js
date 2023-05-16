@@ -7,21 +7,21 @@ import { getMenus } from "../Shared/apis/getMenus";
 export default function Nav({ setSelectedMenu }) {
   const MenuLabel = {
    
-    single: "단품메뉴",
-    side: "사이드",
+   // single: "단품메뉴",
+   // side: "사이드",
     service: "음료수",
   };
 
   const [tabsData, setTabsData] = useState([
    
-    {
-      label: "단품메뉴",
-      content: [],
-    },
-    {
+   // {
+    // label: "단품메뉴",
+    //  content: [],
+   // },
+   /* {
       label: "사이드",
       content: [],
-    },
+    },*/
     {
       label: "음료수",
       content: [],
