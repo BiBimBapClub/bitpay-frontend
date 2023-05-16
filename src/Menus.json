@@ -3,9 +3,10 @@
     "id": 1,
     "name": "인싸세트(닭강정2 + 오뎅탕 + 오돌뼈 + 닭발 + 주먹밥2)",
     "price": 48000,
-    "type": "set",
+    "type": "none",
     "image": "/images/set1.png"
   },
+  
   {
     "id": 2,
     "name": "너드세트1 (닭발 + 주먹밥)",
@@ -38,7 +39,7 @@
     "id": 6,
     "name": "닭강정",
     "price": 5000,
-    "type": "side",
+    "type": "none",
     "image": "/images/chicken.png"
   },
   {
