@@ -6,7 +6,7 @@
     "type": "none",
     "image": "/images/set1.png"
   },
-  
+
   {
     "id": 2,
     "name": "너드세트1 (닭발 + 주먹밥)",
@@ -39,7 +39,7 @@
     "id": 6,
     "name": "닭강정",
     "price": 5000,
-    "type": "none",
+    "type": "side",
     "image": "/images/chicken.png"
   },
   {
@@ -60,14 +60,14 @@
     "id": 9,
     "name": "닭발",
     "price": 12000,
-    "type": "none",
+    "type": "single",
     "image": "/images/chickenfeet.png"
   },
   {
     "id": 10,
     "name": "주먹밥",
     "price": 4000,
-    "type": "none",
+    "type": "side",
     "image": "/images/rice.png"
   },
   {
