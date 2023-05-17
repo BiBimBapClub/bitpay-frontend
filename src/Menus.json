@@ -81,7 +81,7 @@
     "id": 12,
     "name": "사이다",
     "price": 2000,
-    "type": "none",
+    "type": "service",
     "image": "/images/cyder.png"
   },
   {
