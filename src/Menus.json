@@ -67,7 +67,7 @@
     "id": 10,
     "name": "주먹밥",
     "price": 4000,
-    "type": "none",
+    "type": "side",
     "image": "/images/rice.png"
   },
   {
