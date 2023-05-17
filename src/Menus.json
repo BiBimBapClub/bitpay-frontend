@@ -39,7 +39,7 @@
     "id": 6,
     "name": "닭강정",
     "price": 5000,
-    "type": "side",
+    "type": "none",
     "image": "/images/chicken.png"
   },
   {
